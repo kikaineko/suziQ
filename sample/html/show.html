@@ -1,0 +1,17 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script src="../js/jquery-1.5.js"></script>
+<script src="../../src/jquery.suziQ.js"></script>
+<script src="../js/jquery.suziQ.settings.js"></script>
+</head>
+<body>
+Hello <span name="firstname"></span> <span name="lastname"></span>!
+<script type='text/javascript'>
+var $$=$.sq;
+$$(function(data){
+	$("span").fill(data);
+});
+</script>
+</body>
+</html>

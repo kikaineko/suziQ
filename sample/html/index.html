@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script src="../js/jquery-1.5.js"></script>
+<script src="../../src/jquery.suziQ.js"></script>
+<script src="../js/jquery.suziQ.settings.js"></script></head>
+<body>
+<form id="fid">
+firstname: <input type='text' name='firstname'/>  
+lastname: <input type='text' name='lastname'/>
+<button name="bttn">Run</button>
+</form>
+<script type='text/javascript'>
+$$=$.sq;
+$$(function(data){
+	$("[name=bttn]").click(function(){
+		var sample_data=$$.form2obj("fid");
+		$$.ajax.to("show.html",sample_data);
+		return false;
+	});
+});
+</script>
+</body>
+</html>
