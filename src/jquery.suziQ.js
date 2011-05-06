@@ -420,9 +420,6 @@
 						.log("[SuziQ-11]jQuery.sq.cookie's options.expires must be a number or a Date Object.");
 			}
 		}
-		//var path = options.path ? '; path=' + (options.path) : '';
-		//var domain = options.domain ? '; domain=' + (options.domain) : '';
-		//var secure = options.secure ? '; secure' : '';
 		var s=name+"=";
 		s+= encodeURIComponent(value);
 		s+=expires;
@@ -430,8 +427,6 @@
 		s+=(options.domain ? '; domain=' + (options.domain) : '');
 		s+=(options.secure ? '; secure' : '');
 		document.cookie=s;
-		//document.cookie = [name, '=', encodeURIComponent(value), expires, path,
-			//	domain, secure].join('');
 	};
 
 
