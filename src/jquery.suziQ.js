@@ -359,13 +359,14 @@
 	jQuery.sq.create_message = function(key, args) {
 		var s = jQuery.sq.internal.messages[key];
 		if (s == undefined) {
-			return key;
+			s = key;
 		}
-		for (var i = 0; i < args.length; i++) {
-			var ss = "{" + i + "}";
-			s = s
-					.replace(ss, jQuery.sq.create_message(args[i],
-									[]));
+	        
+	        if (typeof args !== "string") {
+		        for (var i = 0; i < args.length; i++) {
+			        var ss = "{" + i + "}";
+			        s = s.replace(ss, jQuery.sq.create_message(args[i],[]));
+		        }
 		}
 		return s;
 	};
