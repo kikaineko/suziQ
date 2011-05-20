@@ -2,7 +2,7 @@
  * suziQ is a JavaScript Tool for mock HTML.
  * https://github.com/kikaineko/suziQ
  *
- * Copyright 2011, Masayuki Ioki.
+ * Copyright 2011, Masayuki Ioki, yosi-q.
  * Licensed under the MIT.
  * https://github.com/kikaineko/suziQ/blob/master/License.txt
  *
@@ -359,13 +359,14 @@
 	jQuery.sq.create_message = function(key, args) {
 		var s = jQuery.sq.internal.messages[key];
 		if (s == undefined) {
-			return key;
+			s = key;
 		}
-		for (var i = 0; i < args.length; i++) {
-			var ss = "{" + i + "}";
-			s = s
-					.replace(ss, jQuery.sq.create_message(args[i],
-									[]));
+	        
+        if (args !== undefined) {
+            for (var i = 0; i < args.length; i++) {
+                var ss = "{" + i + "}";
+                s = s.replace(ss, jQuery.sq.create_message(args[i],[]));
+            }
 		}
 		return s;
 	};
