@@ -533,7 +533,7 @@
 			} else {
 				jQuery.sq.log("[SuziQ-6] Please define mock function.");
 				if (option['success']) {
-					option['success'](res, {}, {});
+					option['success']({}, {}, {});
 				} else if (callback) {
 					jQuery.sq.ajax.request_data=d;
 					jQuery.sq.ajax.response_data=null;
