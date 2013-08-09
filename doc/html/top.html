@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-type" content="text/css">
+<script type='text/javascript' src='../../js/user/jquery-1.5.js'></script>
+<script type='text/javascript' src='../../js/user/jquery.json-2.2.min.js'></script>
+<script type='text/javascript' src='../../js/user/jquery.suziQ.js'></script>
+<script type='text/javascript' src='../../js/user/jquery.suziQ.settings.js'></script>
+<script type='text/javascript' src='../../js/user/jquery-ui-1.8.2.custom.min.js'></script>
+
+<script type='text/javascript' src='../../js/j-star/j-star.js'></script>
+
+
+
+
+
+
+
+<title>J-Star</title>
+<link rel='stylesheet' href='../style/style.css' type='text/css'>
+</head>
+<body>
+
+<div id="flame">
+
+<!--ヘッダ-->
+<div id="head">
+<a href="top.html"><div id="logo">J-Star</div></a>
+</div>
+<!--/ヘッダ-->
+
+<!--サイドとメインをくくる-->
+<div id="center">
+<div id="centertop"></div>
+	<!--メインのブロック-->
+	<div id="box_main">
+
+	<div class="main">
+	<h1>J-Starとは</h1>
+	<p>
+	サーバと画面を完全に分離することによりAgileな開発を可能にするJavascriptフレームワークです。<br><br>
+	J2EE 標準の Web アプリケーション用ビュー技術は JSP (JavaServer Pages) です。しかし JSP は『ビューとロジックとが切り分けられず、実行しなければデザインの確認ができない』
+	というビュー技術として致命的な欠陥を持っています。しかしJ-StarはJQueryをベースにしたJS技術でこの問題を解決します。<br>
+	また既存のビュー技術ではサーバ側で次遷移先を決定していましたが、J-Starでは次画面遷移先の決定もJ-Star自身がおこなうため、サーバーはサービス処理だけに注力することが出来ます。<br><br>
+	</p>
+	</div>
+	<br><br>
+	
+	<div class="main">
+	<h1>特徴</h1><br>
+	<div class="submain">
+	<strong>1. ローカルモードでの動的画面が作成可能</strong>
+	</div>
+	<div class="sub">
+	ローカルモードとはサーバーへの接続をOFFにした状態（サーバーが無い状態）を指します。
+	今までの紙芝居HTMLでは出来ない、ユーザーの入力に反応する画面が作成できます。
+	これにより画面の変更はテスト前まで可能になり、お客様と画面を考える時間を増やすことが出来ます。
+	また、設計フェーズではサービスI/Fの決定だけに注力することが出来ます。
+	システムが完成する前に挙動が目に見えるのでGDやリモートメンバの理解につながり品質向上が期待できます。
+	</div><br>
+	<div class="submain">
+	<strong>2.強力なデバッガ</strong>
+	</div>
+	<div class="sub">
+	各画面で「SHIFT + CTRL + ALT + SPACE」を同時に押下すると、ページ下部にデバッガ画面が現れます。
+	フォームなどの情報（画面定義書）、ログ、現在のHTMLが出力されます。
+	画面定義書は、選択された項目がハイライトされ今までの画面定義書では実現できなかった紐付が可能です。
+	<br>※当機能はアドオンで提供しています
+	</div>
+	<br>
+	<div class="submain">
+	<strong>3.国際化</strong>
+	</div>
+	<div class="sub">
+	ブラウザで使用している言語に応じた画面が表示できます。デフォルトの言語のみ使用する場合HTMLにそのまま記述できるためメッセージファイルの作成は必要ありません。
+	</div><br>
+	<div class="submain">
+	<strong>4.豊富な便利機能</strong>
+	</div>
+	<div class="sub">
+	入力チェックやフォーマット処理が豊富に提供されています。
+	また、jQueryベースのため、J-Star以外のツールとも簡単に連携できます。
+	<br>
+	</div>
+	</div><br><br>
+	
+	
+	
+
+	
+
+
+	
+	</div>
+<!--メインのブロック終わり-->
+
+
+<!--サイドのブロック-->
+	<div id="box_side">
+		<div class="menu">
+			<h3>J-Starとは</h3>
+			<ul>
+				<li><a href="overview.html">概要</a></li>
+				<li><a href="suziQ_JStar.html">suziQとJ-Star</a></li>
+				<li><a href="basic/mode.html">3つのモード</a></li>
+				<li><a href="basic/message.html">国際化</a></li>
+				<li><a href="debugger/debugger.html">強力なデバッガー</a></li>
+				<li><a href="setup_obj/setup_obj.html">setup_obj</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>GetStart</h3>
+			<ul>
+				<li><a href="getstart/gettingStart_main.html">J-Starを使ってみよう</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>API</h3>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">ajax</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="api/ajax/ajax.html">ajax(options)</a></li>
+					<li><a href="api/ajax/to.html">to(url,data,selector(option))</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">dom</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="api/dom/createOptions(arr).html">createOptions(arr)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">format</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="api/format/format.html">format(options)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">inputprompt</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="api/inputprompt/inputprompt(string).html">inputprompt(string)</a></li>
+					<li><a href="api/inputprompt/inputprompt(string,class).html">inputprompt(string, class)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">validator</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="api/validator/validate.html">validate</a></li>
+					<li><a href="api/validator/valid_message(val).html">valid_message(val)</a></li>
+					<li><a href="api/validator/valid_message(val,args).html">valid_message(val, args)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">suziQ</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="api/suziQ/fill.html">fill(data,fnc(option))</a></li>
+					<li><a href="api/suziQ/sq_post.html">sq_post(opts)</a></li>
+					<li><a href="api/suziQ/sq_post.html">sq_get(opts)</a></li>
+					<li><a href="api/suziQ/sq_post.html">sq_put(opts)</a></li>
+					<li><a href="api/suziQ/sq_post.html">sq_delete(opts)</a></li>
+					<li><a href="api/suziQ/sq_norequest.html">sq_norequest(opts)</a></li>
+				</div>
+			</ul>
+		</div>
+	</div>
+<!--サイドのブロック終わり-->
+
+	<br class="both"><!--回り込みの解除-->
+</div>
+<!--/サイドとメインをくくる-->
+	<div id="centerbottom"></div><!--下の丸み-->
+
+
+<!--フッタ-->
+<div id="foot">
+Copyright（c）2011 IBM All rights reserved
+</div>
+<!--フッタ終わり-->
+
+
+</div>
+<!--iflameで閉じる-->
+</body>
+</html>

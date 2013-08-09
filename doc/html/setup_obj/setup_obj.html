@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-type" content="text/css">
+
+<script type='text/javascript' src='../../../js/user/jquery-1.5.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.json-2.2.min.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.suziQ.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.suziQ.settings.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery-ui-1.8.2.custom.min.js'></script>
+
+<script type='text/javascript' src='../../../js/j-star/j-star.js'></script>
+
+
+
+<title>J-Star</title>
+<link rel='stylesheet' href='../../style/style.css' type='text/css'>
+<link rel='stylesheet' href='../../style/j-star.css' type='text/css'>
+</head>
+<body>
+
+<div id="flame">
+<!--ヘッダ-->
+<div id="head">
+<a href="../top.html"><div id="logo">J-Star</div></a>
+</div>
+<!--/ヘッダ-->
+
+
+<!--サイドとメインをくくる-->
+<div id="center">
+<div id="centertop"></div>
+	<!--メインのブロック-->
+	<div id="box_main">
+
+	<div class="main">
+	<h1>setupオブジェクト</h1>
+	<p>
+	setupオブジェクトはJ-Starの最も基本的で重要なオブジェクトです。
+	このsetupオブジェクトのinit関数を定義することにより、J-Starが機能するようになります。
+	<br><br>
+	setupオブジェクトに設定できる値は以下の通りです。</p>
+<dt>init</dt><dd>
+この値は必須です。<br>
+画面に対する挙動のすべてをこのinit関数内で行ってください。<br>
+<br>
+init関数の引数は２つです。最初の引数は前画面から引き継がれるデータです。より正確には$$.ajax.to関数（画面遷移を起こす関数）で渡されるデータになります。
+２つ目の引数は、メッセージオブジェクトになります。メッセージオブジェクトはsetupオブジェクトのmessagesに指定されたメッセージを格納したオブジェクトになります。<br>
+</dd>
+
+<dt> messages </dt>
+<dd>
+messagesには、読み込みたいメッセージファイルを配列で指定してください。<br>
+この値は必須ではありません。<br>
+<br>
+メッセージファイルの指定は、やや特別です。これは各ブラウザのロケールにあったファイルが読み込まれるようになるためです。<br>
+例えば以下のような指定の場合
+  <pre class="javascript" wrap="1">
+$$.setup ={
+  messages: ["../js/aaa","bbb"],
+  init : function(data,messages){}
+};
+</pre>
+
+このブラウザのロケールが「ja」だとすると、実際に読み込まれるファイルは<br>
+../js/aaa_ja.js と bbb_ja.js の２つになります。<br>
+つまり、messagesで指定された値に対して「_ja.js」が付加されたファイルが読み込まれます。
+もちろん ja 部分はロケールによって変わります。<br>
+<br>
+また、一度読まれたファイルは２回読み込まれることはありません。<br>
+<br>
+<br>
+国際化機能をOFFにした場合、「_ja」の部分が省かれます。先ほどの例でいえば<br>
+../js/aaa/js と bbb.js の２ファイルになります。
+
+</dd>
+
+<dt>dummy_data</dt><dd>
+この値は、ローカルモードでのみ有効になります。前画面からのデータをMock化することができます。<br>
+この値は必須ではありません。<br>
+<br>
+この値はinit関数の第１引数に渡されますが、前画面が存在しない場合、つまりローカルモードで一番最初に開いたHTML内でのみ使用されます。<br>
+
+</dd>
+
+
+
+
+
+
+</div>
+
+
+	
+	</div>
+<!--メインのブロック終わり-->
+<!--サイドのブロック-->
+	<div id="box_side">
+		<div class="menu">
+			<h3>J-Starとは</h3>
+			<ul>
+				<li><a href="../overview.html">概要</a></li>
+				<li><a href="../suziQ_JStar.html">suziQとJ-Star</a></li>
+				<li><a href="../basic/mode.html">3つのモード</a></li>
+				<li><a href="../basic/message.html">国際化</a></li>
+				<li><a href="../debugger/debugger.html">強力なデバッガー</a></li>
+				<li><a href="../setup_obj/setup_obj.html">setup_obj</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>GetStart</h3>
+			<ul>
+				<li><a href="../getstart/gettingStart_main.html">J-Starを使ってみよう</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>API</h3>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">ajax</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/ajax/ajax.html">ajax(options)</a></li>
+					<li><a href="../api/ajax/to.html">to(url,data,selector(option))</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">dom</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/dom/createOptions(arr).html">createOptions(arr)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">format</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/format/format.html">format(options)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">inputprompt</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/inputprompt/inputprompt(string).html">inputprompt(string)</a></li>
+					<li><a href="../api/inputprompt/inputprompt(string,class).html">inputprompt(string, class)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">validator</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/validator/validate.html">validate</a></li>
+					<li><a href="../api/validator/valid_message(val).html">valid_message(val)</a></li>
+					<li><a href="../api/validator/valid_message(val,args).html">valid_message(val, args)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">suziQ</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/suziQ/fill.html">fill(data,fnc(option))</a></li>
+					<li><a href="../api/suziQ/sq_post.html">sq_post(opts)</a></li>
+					<li><a href="../api/suziQ/sq_post.html">sq_get(opts)</a></li>
+					<li><a href="../api/suziQ/sq_post.html">sq_put(opts)</a></li>
+					<li><a href="../api/suziQ/sq_post.html">sq_delete(opts)</a></li>
+					<li><a href="../api/suziQ/sq_norequest.html">sq_norequest(opts)</a></li>
+				</div>
+			</ul>
+		</div>
+	</div>
+<!--サイドのブロック終わり-->
+
+	<br class="both"><!--回り込みの解除-->
+</div>
+<!--/サイドとメインをくくる-->
+	<div id="centerbottom"></div><!--下の丸み-->
+
+
+<!--フッタ-->
+<div id="foot">
+Copyright（c）2011 IBM All rights reserved
+</div>
+<!--フッタ終わり-->
+
+</div>
+<!--iflameで閉じる-->
+</body>
+</html>

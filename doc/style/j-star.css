@@ -1,0 +1,105 @@
+.valid_err {
+  background-color: #FFDAB9 !important;
+}
+.valid_div {
+  color: red;
+  border:solid 1px #B22222;
+  background-color: #FFF5EE;
+}
+
+.changed {
+  background-color: #E6E6FA;
+}
+.input_prompt {
+  color: #C0C0C0 !important;
+}
+
+.suziQ_debug {
+  background-color: #E0FFFF;
+}
+.suziQ_debug_red {
+	background-color: #FF0000  !important;
+}
+.suziQ_debug_font_red {
+	color: #FF0000  !important;
+}
+.suziQ_debug_font_green {
+	color: #008000  !important;
+}
+
+.sq_note {
+	background-color: #FFFF00;
+	filter: alpha(opacity=88);
+	-moz-opacity:0.88;
+	opacity:0.88;
+	z-index: 99;
+	width: 250px;
+	height: 200px;
+  border : 1px inset red;
+}
+
+.sq_note_export {
+	background-color: #ADD8E6;
+	filter: alpha(opacity=95);
+	-moz-opacity:0.95;
+	opacity:0.95;
+	z-index: 99;
+	width:50%;
+	height:100%;   
+	min-height: 100%;
+	position: absolute;
+  border : 1px inset red;
+}
+
+.sq_note table {
+	background-color: #FFA500;
+}
+.sq_note textarea {
+	width:98%;
+	height:150px;
+}
+#garbage_div {
+	background-color: #DEB887;
+	width:50%;
+	height:50px;
+	text-align: center;
+	border-style:double;
+}
+
+
+.sqtip{
+   position: absolute;
+   padding: 10px 13px;
+   z-index: 2;
+   
+   color: #303030;
+   background-color: #E0FFFF;
+   border: 1px solid #FF0000;
+   
+   font-family: sans-serif;
+   font-size: 12px;
+   line-height: 18px;
+   text-align: center;
+}
+
+.loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #E6E6FA;
+    z-index: 9999;
+    filter: alpha(opacity=50);
+    -moz-opacity: 50;
+    opacity: 50;
+}
+
+.suziQ_debug_field_hilight {
+  border : 2px outset red;
+  outline : 2px outset red;
+  background-color: #FFFF00 !important;
+}
+
+#suziQ_debug_body_content table { border: 1px;}
+#suziQ_debug_body_content table th { background-color: #6495ED; text-align: center;}
+#suziQ_debug_body_content table td { background-color: #98FB98; text-align: center;}
+

@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script type='text/javascript' src='../../../../js/user/jquery-1.5.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.json-2.2.min.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.suziQ.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.suziQ.settings.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery-ui-1.8.2.custom.min.js'></script>
+
+<script type='text/javascript' src='../../../../js/j-star/j-star.js'></script>
+
+
+
+
+
+
+<title>J-Star</title>
+<link rel='stylesheet' href='../../../style/j-star.css' type='text/css'>
+</head>
+<body>
+
+<br>
+<form id="Sample01" name="MainForm">
+  <table>
+    <tr>
+      <td id="a_label">.format([{date:"-"}])</td>
+      <td><input type="text" name="a"/></td>
+    </tr>
+    <tr>
+      <td id="b_label">.format([{integer:"%"}])</td>
+      <td><input type="text" name="b"/>
+      </td>
+    </tr>
+    <tr>
+      <td id="c_label">.format([{number:"C"}])</td>
+      <td><input type="text" name="c"/>
+      </td>
+    </tr>
+    <tr>
+      <td id="d_label">.format([{number_size:3.2}])</td>
+      <td><input type="text" name="d"/>
+    </tr>
+    <tr>
+      </td>
+      <td id="e_label">.format([{size:4}])</td>
+      <td><input type="text" name="e"/>
+      </td>
+    </tr>
+  </table>
+</form>
+<script type="text/javascript">
+var $$ = $.sq;
+$$.setup = {
+	init: function(data,messages){
+		$("[name=a]").format([{date:"-"}]);
+		$("[name=b]").format([{integer:"%"}]);
+		$("[name=c]").format([{number:"C"}]);
+		$("[name=d]").format([{number_size:3.2}]);
+		$("[name=e]").format([{size:4}]);
+	}
+};
+</script>
+</body>
+</html>

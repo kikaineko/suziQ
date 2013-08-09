@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-type" content="text/css">
+<script type='text/javascript' src='../../../../js/user/jquery-1.5.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.json-2.2.min.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.suziQ.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.suziQ.settings.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery-ui-1.8.2.custom.min.js'></script>
+
+<script type='text/javascript' src='../../../../js/j-star/j-star.js'></script>
+
+
+
+
+
+<title>J-Star</title>
+<link rel='stylesheet' href='../../../style/style.css' type='text/css'>
+<link rel='stylesheet' href='../../../style/j-star.css' type='text/css'>
+</head>
+<body>
+
+<div id="flame">
+<!--ヘッダ-->
+<div id="head">
+<a href="../../top.html"><div id="logo">J-Star</div></a>
+</div>
+<!--/ヘッダ-->
+
+
+<!--サイドとメインをくくる-->
+<div id="center">
+<div id="centertop"></div>
+	<!--メインのブロック-->
+	<div id="box_main">
+
+	<div class="main">
+	<h1>validate(options)</h1>
+	<p>
+	フォームのテキストフィールドに入力チェックを設定します。<br>
+	実際に入力チェックが実行されるのは、テキストフィールドのchangeイベントが発生した時と、このフォームが送信される直前に実行されます。<br>
+	もし同一テキストフィールドにフォーマットが設定されている場合、
+	入力された値をアンフォーマットしたデータに対して入力チェックが実施されます。<br>
+	<br>
+	またこのvalidate関数はエラー時メッセージ設定のvalidate_messageと共に使われるのが一般的です。<br>
+	<br>
+	<br>
+	このvalidate関数の引数（options）はオブジェクトです。指定できる詳細は以下の通りです。</p>
+<dt>require / boolean</dt><dd>trueの場合必須チェックを行います。</dd>
+<dt>ch / String</dt><dd>入力可能な文字種を指定します。指定可能な種は次の通りです。<br>
+これらは複数指定が可能です。"daA"とした場合、半角英数字を許可します
+<ul>
+<li>"d":半角数字</li>
+<li>"D":半角数字以外</li>
+<li>"a":半角英小文字</li>
+<li>"A":半角英大文字</li>
+<li>"w":半角英数字又は下線</li>
+<li>"W":"半角英数字又は下線"以外</li>
+<li>"&nbsp;":半角空白</li>
+<li>"$":記号（具体的には"!","(","]"などの文字コード33～47,58～64,91～96,123～126）</li>
+</ul></dd>
+<dt>size / [int,int]</dt><dd>入力可能な文字長を指定します。<br>[1,2]の場合1文字以上2文字以下、[5,5]の場合5文字指定となります。</dd>
+<dt>size / int</dt><dd>★現在バグ発生中★最低文字長チェックになっている★<br>入力可能な最大文字長を指定します。<br>size:2の場合、2文字以下の入力が可能です。</dd>
+<dt>mask / patern</dt><dd>指定された正規表現オブジェクトによってパターンマッチングを行います。<br>
+例えば"mask:/^[0-9]a[0-9]$/"の場合、"0a7"はvalidateを通りますが"aaa","0aa"はエラーとなります。</dd>
+<dt>range / [int,int]</dt><dd>数値で入力された値の存在範囲をチェックします。数値以外の文字が入っていた場合エラーとなります。例えば[5,10]の場合、5以上10以下の値が入力可能です。</dd>
+<dt>custom / function</dt><dd>独自に実行する関数を定義します。関数の引数は入力値です。</dd>
+
+
+<div class="return"> 
+<h5>戻り値</h5> 
+<div class="type">jQuery</div><div class="desc"> 
+   jQueryオブジェクト
+   </div> 
+</div>
+<div class="target"> 
+  <h5>ターゲットオブジェクト</h5> 
+  jQueryオブジェクト（入力チェックを設定したいノード）
+</div>
+<div class="samples"> 
+<h5>サンプル</h5> 
+<h6>サンプル1</h6> 
+会員番号の必須チェックと文字種チェックを行います。<br>
+名前は、必須チェックと入力値がTOMでないかどうかをチェックします。
+<pre class="html" wrap="1">
+&lt;form id="Sample01" name="MainForm"&gt;
+
+会員番号&lt;input type="text" name="no"/&gt;
+名前　　　&lt;input type="text" name="name"/&gt;
+
+&lt;input type="button" value="SUBMIT" id='button' /&gt;
+
+&lt;/form&gt;
+</pre> 
+
+<pre class="javascript" wrap="1">
+var isTOM = function(data){
+  return data != "TOM";
+};
+
+$("[name=no]").validate({require:true, ch: "daA"})
+  .valid_message("valid.req.def",[$("#no_label").html(),"valid.char.aAn"]);
+
+$("[name=name]").validate({require:true,ch: " aA", custom:isTOM})
+  .valid_message("名前は半角英字か半角空白のみ許可。TOMは不可。");
+
+</pre> <br>
+[<a href="validate_src.html">別ページで表示</a>]<br>
+<iframe src="validate_src.html"width=624></iframe><br><br>
+</div> 
+</div>
+
+
+	
+	</div>
+<!--メインのブロック終わり-->
+
+<!--サイドのブロック-->
+	<div id="box_side">
+		<div class="menu">
+			<h3>J-Starとは</h3>
+			<ul>
+				<li><a href="../../overview.html">概要</a></li>
+				<li><a href="../../suziQ_JStar.html">suziQとJ-Star</a></li>
+				<li><a href="../../basic/mode.html">3つのモード</a></li>
+				<li><a href="../../basic/message.html">国際化</a></li>
+				<li><a href="../../debugger/debugger.html">強力なデバッガー</a></li>
+				<li><a href="../../setup_obj/setup_obj.html">setup_obj</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>GetStart</h3>
+			<ul>
+				<li><a href="../../getstart/gettingStart_main.html">J-Starを使ってみよう</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>API</h3>
+			<h3>API</h3>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">ajax</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/ajax/ajax.html">ajax(options)</a></li>
+					<li><a href="../../api/ajax/to.html">to(url,data,selector(option))</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">dom</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/dom/createOptions(arr).html">createOptions(arr)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">format</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/format/format.html">format(options)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">inputprompt</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/inputprompt/inputprompt(string).html">inputprompt(string)</a></li>
+					<li><a href="../../api/inputprompt/inputprompt(string,class).html">inputprompt(string, class)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">validator</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/validator/validate.html">validate</a></li>
+					<li><a href="../../api/validator/valid_message(val).html">valid_message(val)</a></li>
+					<li><a href="../../api/validator/valid_message(val,args).html">valid_message(val, args)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">suziQ</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/suziQ/fill.html">fill(data,fnc(option))</a></li>
+					<li><a href="../../api/suziQ/sq_post.html">sq_post(opts)</a></li>
+					<li><a href="../../api/suziQ/sq_post.html">sq_get(opts)</a></li>
+					<li><a href="../../api/suziQ/sq_post.html">sq_put(opts)</a></li>
+					<li><a href="../../api/suziQ/sq_post.html">sq_delete(opts)</a></li>
+					<li><a href="../../api/suziQ/sq_norequest.html">sq_norequest(opts)</a></li>
+				</div>
+			</ul>
+		</div>
+	</div>
+<!--サイドのブロック終わり-->
+
+	<br class="both"><!--回り込みの解除-->
+</div>
+<!--/サイドとメインをくくる-->
+	<div id="centerbottom"></div><!--下の丸み-->
+
+
+<!--フッタ-->
+<div id="foot">
+Copyright（c）2011 IBM All rights reserved
+</div>
+<!--フッタ終わり-->
+
+
+</div>
+<!--iflameで閉じる-->
+</body>
+</html>

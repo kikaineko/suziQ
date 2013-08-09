@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-type" content="text/css">
+
+<script type='text/javascript' src='../../../../js/user/jquery-1.5.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.json-2.2.min.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.suziQ.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.suziQ.settings.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery-ui-1.8.2.custom.min.js'></script>
+
+<script type='text/javascript' src='../../../../js/j-star/j-star.js'></script>
+
+
+
+
+
+
+
+<title>J-Star</title>
+<link rel='stylesheet' href='../../../style/style.css' type='text/css'>
+<link rel='stylesheet' href='../../../style/j-star.css' type='text/css'>
+</head>
+<body>
+
+<div id="flame">
+<!--ヘッダ-->
+<div id="head">
+<a href="../../top.html"><div id="logo">J-Star</div></a>
+</div>
+<!--/ヘッダ-->
+
+
+<!--サイドとメインをくくる-->
+<div id="center">
+<div id="centertop"></div>
+	<!--メインのブロック-->
+	<div id="box_main">
+
+	<div class="main">
+	<h1>createOptions(arr)</h1>
+	<p>配列に格納された値をセレクトボックスタグで使用できるoption要素に変換します。
+</p>
+
+<dl class="arguments"> 
+<h5>引数</h5> 
+<dt>arr</dt><dd><div class="type">配列</div><div class="desc">valueとlabelを要素に持つオブジェクトの配列</div></dd> 
+</dl> 
+ 
+<div class="return"> 
+  <h5>戻り値</h5> 
+  <div class="type">配列</div><div class="desc"> 
+   option要素の配列
+  </div>
+</div>
+
+<div class="target"> 
+  <h5>ターゲットオブジェクト</h5> 
+  SuziQオブジェクト
+</div>
+
+<div class="samples"> 
+<h5>サンプル</h5> 
+<h6>サンプル1</h6> 
+<pre class="javascript" wrap="1">
+  data=[{value:"A00",label:"AAAA"},{value:"B01",label:"BBBB"}];
+  $$.createOptions(data);
+</pre> 
+<br>
+とすると、以下の配列オブジェクトが取得できます<br>
+<pre class="javascript" wrap="1">
+[&lt;option value="A00"&gt;AAAA&lt;/option&gt;, &lt;option value="B01"&gt;BBBB&lt;/option&gt;]
+</pre> 
+
+[<a href="createOptions(arr)_src.html">別ページで表示</a>]<br>
+<iframe src="createOptions(arr)_src.html"width=624></iframe><br><br>
+</div> 
+</div>
+
+
+	
+	</div>
+<!--メインのブロック終わり-->
+
+<!--サイドのブロック-->
+	<div id="box_side">
+		<div class="menu">
+			<h3>J-Starとは</h3>
+			<ul>
+				<li><a href="../../overview.html">概要</a></li>
+				<li><a href="../../suziQ_JStar.html">suziQとJ-Star</a></li>
+				<li><a href="../../basic/mode.html">3つのモード</a></li>
+				<li><a href="../../basic/message.html">国際化</a></li>
+				<li><a href="../../debugger/debugger.html">強力なデバッガー</a></li>
+				<li><a href="../../setup_obj/setup_obj.html">setup_obj</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>GetStart</h3>
+			<ul>
+				<li><a href="../../getstart/gettingStart_main.html">J-Starを使ってみよう</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>API</h3>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">ajax</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/ajax/ajax.html">ajax(options)</a></li>
+					<li><a href="../../api/ajax/to.html">to(url,data,selector(option))</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">dom</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/dom/createOptions(arr).html">createOptions(arr)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">format</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/format/format.html">format(options)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">inputprompt</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/inputprompt/inputprompt(string).html">inputprompt(string)</a></li>
+					<li><a href="../../api/inputprompt/inputprompt(string,class).html">inputprompt(string, class)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">validator</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/validator/validate.html">validate</a></li>
+					<li><a href="../../api/validator/valid_message(val).html">valid_message(val)</a></li>
+					<li><a href="../../api/validator/valid_message(val,args).html">valid_message(val, args)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">suziQ</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/suziQ/fill.html">fill(data,fnc(option))</a></li>
+					<li><a href="../../api/suziQ/sq_post.html">sq_post(opts)</a></li>
+					<li><a href="../../api/suziQ/sq_post.html">sq_get(opts)</a></li>
+					<li><a href="../../api/suziQ/sq_post.html">sq_put(opts)</a></li>
+					<li><a href="../../api/suziQ/sq_post.html">sq_delete(opts)</a></li>
+					<li><a href="../../api/suziQ/sq_norequest.html">sq_norequest(opts)</a></li>
+				</div>
+			</ul>
+		</div>
+	</div>
+<!--サイドのブロック終わり-->
+
+	<br class="both"><!--回り込みの解除-->
+</div>
+<!--/サイドとメインをくくる-->
+	<div id="centerbottom"></div><!--下の丸み-->
+
+
+<!--フッタ-->
+<div id="foot">
+Copyright（c）2011 IBM All rights reserved
+</div>
+<!--フッタ終わり-->
+
+
+</div>
+<!--iflameで閉じる-->
+</body>
+</html>

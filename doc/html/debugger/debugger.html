@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-type" content="text/css">
+
+
+
+<script type='text/javascript' src='../../../js/user/jquery-1.5.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.json-2.2.min.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.suziQ.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.suziQ.settings.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery-ui-1.8.2.custom.min.js'></script>
+
+<script type='text/javascript' src='../../../js/j-star/j-star.js'></script>
+
+
+
+
+
+<title>J-Star</title>
+<link rel='stylesheet' href='../../style/style.css' type='text/css'>
+<link rel='stylesheet' href='../../style/j-star.css' type='text/css'>
+</head>
+<body>
+
+
+<div id="flame">
+<!--ヘッダ-->
+<div id="head">
+<a href="../top.html"><div id="logo">J-Star</div></a>
+</div>
+<!--/ヘッダ-->
+<!--サイドとメインをくくる-->
+<div id="center">
+<div id="centertop"></div>
+	<!--メインのブロック-->
+	<div id="box_main">
+	<div class="main">
+	<h2>debugger</h2>
+	<p>SuziQは強力なデバッガーを備えています。
+	</p>
+	</div>
+
+	<div class="main">
+	<h2>使い方</h2>
+	<p>デバッガーを利用するには、本番モード以外のモードで<br>
+SHIFT + CTRL + ALT + SPACE<br>
+を同時に押してください。現在の画面にデバッガー画面が表示されます。<br>
+起動キーを変えたい場合は、jquery.suziQ.settings.js 内の jQuery.sq.settings.debugger_keycodes
+を上書きしてください。
+	</p>
+[<a href="debugger_src.html">別ページで表示</a>]<br>
+	<iframe src="debugger_src.html"width=624 height=400></iframe>
+	</div>
+	<div class="main">
+	<h2>機能説明</h2>
+<br>
+<dt>LOG</dt>
+<dd>
+jQuery.sq.log関数に渡した文字列が出力されます。<br>
+これは、今までJavascriptのデバッグで用いられていたalert関数の代替となる機能です。<br>
+またメッセージの最後にタイムスタンプが出力されます。<br>
+このタイムスタンプは、new Date()オブジェクトの返すミリ秒です。<br>
+</dd><br>
+<dt>Javascript Runner</dt><dd>任意のJavascriptを実行できます。また、現在の画面情報が取得できます。サンプル画面で alert($("[name=name]").val());
+ と入力し実行してみてください。名前欄に入力した値が取得できます。このように、変数に代入された値を見ることができます。</dd><br>
+<dt>Config</dt><dd>画面の基本情報が出力されます。
+<ul>
+<li>Basic Information</li>
+現在のモード、ロケール、SuziQのバージョンが表示されます。<br><br>
+<li>jQuery.sq.setup</li>
+setup関数内の下記情報を表示します。
+<ul>
+<li>messages</li>
+<li>dummy_data</li>
+<li>init関数</li>
+</ul>
+</ul></dd><br>
+<dt>HTML</dt><dd>
+現在のHTMLが出力されます。まれにscriptタグの中身が出力されないことがあります。このため、なるべく重要な処理はinit関数の中で定義、実行してください。
+また、関数名が分かっている場合は「Javascript Runner」で実装の中身を見ることも可能です。
+</dd><br>
+<dt>documentation</dt><dd>
+画面情報が出力されます。デバッガー画面右上のdocumentationボタンを押すと表示されます。
+<ul>
+<li>Form Information</li>
+画面内のフォーム情報です。<br>Hilightをチェックすると該当項目をハイライト出来ます。<br><br>
+<li>Bottun Information</li>
+画面内のボタン情報です。
+</ul><br>
+<img src= "1.bmp" border=1></dd><br>
+	</div>
+
+	</div>
+<!--メインのブロック終わり-->
+<!--サイドのブロック-->
+	<div id="box_side">
+		<div class="menu">
+			<h3>J-Starとは</h3>
+			<ul>
+				<li><a href="../overview.html">概要</a></li>
+				<li><a href="../suziQ_JStar.html">suziQとJ-Star</a></li>
+				<li><a href="../basic/mode.html">3つのモード</a></li>
+				<li><a href="../basic/message.html">国際化</a></li>
+				<li><a href="../debugger/debugger.html">強力なデバッガー</a></li>
+				<li><a href="../setup_obj/setup_obj.html">setup_obj</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>GetStart</h3>
+			<ul>
+				<li><a href="../getstart/gettingStart_main.html">J-Starを使ってみよう</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>API</h3>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">ajax</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/ajax/ajax.html">ajax(options)</a></li>
+					<li><a href="../api/ajax/to.html">to(url,data,selector(option))</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">dom</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/dom/createOptions(arr).html">createOptions(arr)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">format</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/format/format.html">format(options)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">inputprompt</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/inputprompt/inputprompt(string).html">inputprompt(string)</a></li>
+					<li><a href="../api/inputprompt/inputprompt(string,class).html">inputprompt(string, class)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">validator</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/validator/validate.html">validate</a></li>
+					<li><a href="../api/validator/valid_message(val).html">valid_message(val)</a></li>
+					<li><a href="../api/validator/valid_message(val,args).html">valid_message(val, args)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">suziQ</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/suziQ/fill.html">fill(data,fnc(option))</a></li>
+					<li><a href="../api/suziQ/sq_post.html">sq_post(opts)</a></li>
+					<li><a href="../api/suziQ/sq_post.html">sq_get(opts)</a></li>
+					<li><a href="../api/suziQ/sq_post.html">sq_put(opts)</a></li>
+					<li><a href="../api/suziQ/sq_post.html">sq_delete(opts)</a></li>
+					<li><a href="../api/suziQ/sq_norequest.html">sq_norequest(opts)</a></li>
+				</div>
+			</ul>
+		</div>
+	</div>
+<!--サイドのブロック終わり-->
+
+	<br class="both"><!--回り込みの解除-->
+</div>
+<!--/サイドとメインをくくる-->
+	<div id="centerbottom"></div><!--下の丸み-->
+
+
+<!--フッタ-->
+<div id="foot">
+Copyright（c）2011 IBM All rights reserved
+</div>
+<!--フッタ終わり-->
+
+
+</div>
+<!--iflameで閉じる-->
+</body>
+</html>

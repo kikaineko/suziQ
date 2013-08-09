@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script type='text/javascript' src='../../../../js/user/jquery-1.5.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.json-2.2.min.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.suziQ.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.suziQ.settings.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery-ui-1.8.2.custom.min.js'></script>
+
+<script type='text/javascript' src='../../../../js/j-star/j-star.js'></script>
+
+
+
+
+
+
+<title>J-Star</title>
+<link rel='stylesheet' href='../../../style/j-star.css' type='text/css'>
+</head>
+<body>
+
+<script type="text/javascript">
+var $$ = $.sq;
+$$.setup = {
+	messages: ['../../../../js/j-star/message'],
+	init: function(data,messages){
+		$("[name=sample]").validate({require:true}).valid_message("名前は必須です!!");
+
+		$("#button").sq_norequest({
+			callback: function(data){}
+		});
+	}
+};
+</script>
+
+<form id="Sample01" name="MainForm">
+名前 <input type="text" name="sample"/> <input type="button" value="SUBMIT" id='button' />
+</form>
+</body>
+</html>

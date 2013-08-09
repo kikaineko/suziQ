@@ -1,0 +1,288 @@
+/*ページ全体の指定*/
+*{
+	margin:0;
+	padding:0;
+	font:normal normal 100% "ＭＳ ゴシック";
+}
+
+body{
+margin:0px;
+padding:0px;
+font-size:84%;
+background:#ADD8E6;
+color:#666666;
+}
+
+
+/*ページの輪郭*/
+#flame{
+	width: 950px;
+	margin:0 auto;
+}
+
+
+
+/*サイト名前：ロゴを入れたりしてください*/
+#logo{
+	text-align: right; 
+	font-size:300%;
+	padding:20px 0;
+	color:#ffffff;
+	font-family:Cooper Black;
+	}
+
+
+/*サイドとメインをくくる*/
+
+#center{
+	background-color: #ffffff;
+	}
+		
+
+				
+/*サイドのブロック*/
+#box_side{
+	width: 240px;
+	float: left;
+}
+.menu{
+	width:200px;
+	margin:20px;
+	}
+	
+.submenu{ 
+	width:200px;
+	margin:20px 5px 0px 0px;
+	}
+	
+.submenu li a{ 
+font-weight: bolder;
+	}
+.subsubmenu{
+	width:200px;
+	margin:0px 2px 0px 15px;
+	}
+	
+	h3{
+	font-size:15px;
+	font-family:Tahoma;
+	color:#ffffff;
+	height:25px;
+	background-color: #0000CD;
+	padding:5px 0 0 10px;
+		}
+	#box_side ul{
+		list-style:none;
+		}
+	#box_side li{
+		width:180px;
+		margin:5px 10px;
+			}
+	#box_side li a{
+		text-decoration:none;
+		color:#666666;
+		}
+	#box_side li a:hover{
+		color:#000000;
+		}
+			
+
+			
+
+/*右のブロック*/
+#box_main{
+	width: 700px;
+	float: right;
+}
+
+/*右のタイトル部分*/
+h1,h2{
+	font-size:18px;
+	font-family:Tahoma;
+	background-color: #000080;
+	color:#ffffff;
+	height:25px;
+	padding:5px 0 0 10px;
+	}
+	
+	/*メインの記事の部分*/
+	
+	.submain{
+		margin:0px 10px 0 10px;
+			}
+	.main{
+		margin:20px 20px 0 20px;
+		}
+		
+	/*本文をくる*/
+	p{
+		padding:15px 7px;
+		line-height:150%;
+		}
+		
+	/*引用文*/
+	blockquote{
+		margin:10px;
+		padding:5px;
+		line-height:150%;
+		border:1px solid #cccccc;
+		}
+	
+	/*強調文*/
+	strong{
+		font-weight: 700;
+		}
+		
+	pageLink{
+		font-weight: 700;
+		padding:0px ;
+		}
+
+	li{
+		padding:2px 0px ;
+		}
+		
+	/*詳細*/
+	.sub{
+		margin:5px 10px 10px 15px ;
+		}
+		
+dt {
+	padding:5px 7px 0px 7px;
+	font-weight: bold;
+	border-bottom: thin solid #ccc;
+}
+
+dd {
+	padding:0px 0px 10px 20px;
+}
+dd ul{
+	padding:5px 0px 0px 25px;
+}
+
+
+div.samples {
+	margin-top: 15px;
+	padding: 5px;
+	width: 95%;
+	border: 1px solid #ccc;
+}
+
+div.samples h5 {
+	background-color: #ccc;
+	color: #333;
+	padding: 2px;
+	font-weight: bold;
+}
+
+div.samples h6 {
+	border-bottom: 1px solid #ccc;
+	margin-top: 10px;
+	font-size: x-small;
+	margin-bottom: 5px;
+}
+
+pre {
+	background-color: #000;
+	padding: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+  border: 2px solid #696969;
+  white-space: -moz-pre-wrap; /* Mozilla */
+  white-space: -pre-wrap;     /* Opera 4-6 */
+  white-space: -o-pre-wrap;   /* Opera 7 */
+  white-space: pre-wrap;      /* CSS3 */
+  word-wrap: break-word;      /* IE 5.5+ */
+	overflow: auto;
+}
+
+pre.html {
+  background-color: #90ee90;
+}
+
+pre.css {
+  background-color: #adff2f;
+}
+
+pre.javascript {
+  background-color: #e0ffff;
+}
+
+.return {
+	margin-top: 10px;
+	padding: 5px;
+	border: 1px solid #ccc;
+	width: 95%;
+}
+
+.return h5 {
+	background-color: #ccc;
+	color: #333;
+	padding: 2px;
+	font-weight: bold;
+}
+
+.return .type {
+	font-style: italic;
+}
+.target {
+	margin-top: 10px;
+	padding: 5px;
+	border: 1px solid #ccc;
+	width: 95%;
+}
+
+.target h5 {
+	background-color: #ccc;
+	color: #333;
+	padding: 2px;
+	font-weight: bold;
+}
+
+.target .type {
+	font-style: italic;
+}
+
+.arguments {
+	margin-top: 10px;
+	padding: 5px;
+	width: 95%;
+	border: 1px solid #ccc;
+}
+
+.arguments h5 {
+	background-color: #ccc;
+	color: #333;
+	padding: 2px;
+	font-weight: bold;
+}
+
+.arguments dt {
+	font-weight: bold;
+	border-bottom: 1px solid #ccc;
+}
+
+.arguments dd {
+	border thin solid red;
+	margin-left: 15px;
+}
+
+.arguments .type {
+	font-style: italic;
+}
+
+
+
+/*著作権表示の部分つまりフッタ*/
+#foot{
+	text-align: right; 
+	color:#F5F5F5;
+	padding:3px;
+	}
+
+
+.both{
+	clear:both;
+	}
+		
+		

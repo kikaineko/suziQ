@@ -1,0 +1,607 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-type" content="text/css">
+
+<script type='text/javascript' src='../../../js/user/jquery-1.5.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.json-2.2.min.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.suziQ.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.suziQ.settings.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery-ui-1.8.2.custom.min.js'></script>
+
+<script type='text/javascript' src='../../../js/j-star/j-star.js'></script>
+
+
+
+
+<title>J-Star</title>
+<link rel='stylesheet' href='../../style/style.css' type='text/css'>
+<link rel='stylesheet' href='../../style/j-star.css' type='text/css'>
+</head>
+<body>
+
+<div id="flame">
+<!--ヘッダ-->
+<div id="head">
+<a href="../top.html"><div id="logo">J-Star</div></a>
+</div>
+<!--/ヘッダ-->
+
+
+<!--サイドとメインをくくる-->
+<div id="center">
+<div id="centertop"></div>
+	<!--メインのブロック-->
+	<div id="box_main">
+
+	<div class="main">
+	<h1>Getting Start</h1>
+	<p>
+	Getting Start　では下記のパターンを用意しています。<br><br><br>
+	１．まずはJ-Starに触れてみましょう
+	<ul>
+	<li><a href="#1_1">１－１　単一フォームの単一データを次画面に引き渡す</a></li>
+	<li><a href="#1_2">１－２　単一フォームの複数データを次画面に一括して引き渡す</a></li>
+	</ul>
+	<br><br><br>
+	２．ローカルモードとサーバーモードの違いを理解しましょう
+	<ul>
+	<li><a href="#2_1">２－１　ローカルモード・サーバーモードとは</a></li>
+	<li><a href="#2_1_1">２－２　準備：プロジェクト作成</a></li>
+	<li><a href="#2_2">２－３　ローカルモードを実装する</a>
+		<ul>
+		<li>　　<a href="#2_2_1">２－３－１　遷移元・遷移先HTMLの作成</a></li>
+		<li>　　<a href="#2_2_2">２－３－２　ダミー処理を行うjsファイルの作成</a></li>
+		</ul>
+	</li>
+	<li><a href="#2_3">２－４　サーバーモードを実装する</a>
+		<ul>
+		<li>　　<a href="#2_3_1">２－４－１　処理を行うJavaファイルの作成</a></li>
+		<li>　　<a href="#2_3_2">２－４－２　web.xmlの作成</a></li>
+		</ul>
+	</li>
+	</ul>
+	
+<br><br>
+<br>-------------------------------------------------------------<br><br><br>
+<pageLink id="1_1">単一フォームの単一データを次画面に引き渡す</pageLink>
+	<p><br>
+	フォームに入力した名前を次画面で出力してみましょう。<br>
+	[イメージ図]<br>
+	　form1_1.html<br>
+	<img src ="img_getstart/1.bmp" border="1"></p>
+	　↓<br><br>
+	　form1_2.html<br>
+	<img src ="img_getstart/2.bmp" border="1"><br><br><br><br>
+	[やり方]<br>
+	1. まずは、form1_1.htmlを作りましょう。<br>
+	J-Starを利用するには、form1_1.htmlに以下のjsファイルを読み込みます<br>
+	<blockquote>
+jquery-1.5.js<br>
+jquery.suziQ.js<br>
+j-star.js<br>
+jquery.suziQ.settings.js<br>
+	</blockquote><br>
+	これらのJSファイル間には依存関係があるため、この順番に読み込んでください。
+	jquery.suziQ.settings.jsは、J-Star(SuziQ)に対する設定ファイルです。
+	どのような設定が可能かは<a href="../basic/settings.html">こちら</a>を参照してください。<br>
+	また、このサンプルではjQuery-1.5.jsに依存していますが、別バージョンでも稼動します。<br>
+	<br><br>
+2.form1_1.htmlの&lt;body&gt;タグ内に下記を追加します<br>
+　今回作成したフォームデータはname=yourNameと指定しています。<br>
+ 　またHTMLはすべてUTF-8で記述してください。<br><br>
+<pre class="javascript" wrap="1">
+&lt;form id="MainForm"&gt;
+&lt;input id="d" name="yourName"&gt;&lt;button id="btn"&gt;送信する&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;script type="text/javascript"&gt;
+var $$ = $.sq;<font color="red">　//①</font>
+$$.setup = { <font color="red">　//②</font>
+  init: function(data,messages){　<font color="red">//③</font>
+      $("#btn").sq_norequest({   　　　 <font color="red">//④</font>
+        callback: function(data) {   　　 <font color="red">//⑤</font>
+          $$.ajax.to("form1_2.html",data);  <font color="red">　//⑥</font>
+        }
+      );
+  }
+};
+&lt;/script&gt;<br></pre>
+最初の3行はただのformの定義です。
+これより下のscriptタグ内がJ-Starの利用方法になります。<br>
+まず①で$$という変数を、$.sqで初期化しています。これがSuziQオブジェクトになります。<br>
+次に②行目から最後までがsetupオブジェクトの定義です。そして3行目がinit関数の定義になります。
+setupオブジェクトのinit関数を定義することによってJ-Starの機能を利用できるようになります。
+画面内に関する全ての処理はこのinit関数内で実施してください。<br>
+④行目は$("#btn")に対してsq_norequest関数を呼び出しています。
+$("#btn")はid属性がbtnという値のHTMLのノード、
+つまり今の画面でいうとbuttonタグのノードを表現します。
+そしてこのボタンが押下されたときにsq_norequest関数で指定されたcallback関数が実行されるようになります。
+（sq_norequestという名前は、ボタンを押下しても別段サーバにアクセスしない、必要ないという意味です）
+この例では特にサーバの処理が必要ないためsq_norequestを利用しています。<br>
+⑤行目でcallback関数が定義されています。sq_norequest関数の引数はフォームのデータです。
+6行目ではcallback関数の挙動として、画面遷移を実施しています。
+J-Starではjavascript空間を保持したままの画面遷移は$$.ajax.to関数を利用します。
+この例ではform1_2.htmlに遷移し、その際にフォームの情報を次画面に引き渡すことが書かれています。
+<br>
+<br>
+<br>
+　これで送信元ファイルの作成は完了です。<br>
+<br><br>
+3.gettingStart_main_src2.htmlファイルを作成します<br>
+　前画面から送信されたdataオブジェクトからyourNameを取り出し、それをid=nameに挿入しています。<br>
+　遷移前の画面からフォームのデータがやってきてinit関数の第1引数に渡されるので、その値を利用して画面にデータをうめこみます。
+　ここではjQueryが持っているhtml関数を利用しています。<br>
+<pre class="javascript" wrap="1">
+こんにちは&nbsp;&lt;span id ="name"&gt;太郎&lt;/span&gt;さん
+  &lt;script type="text/javascript"&gt;  
+  var $$ = $.sq; 
+  $$.setup = {  
+    	init: function(data,messages){  
+      	  $("#name").html(data.yourName);   <font color="red">//前画面から送信されたdataオブジェクトのプロパティをid=nameに挿入</font>
+    	}  
+  };  
+  &lt;/script&gt;  
+</pre><br><br>
+4.作成が完了しました！実際に動かしてみましょう<br>
+[<a href="gettingStart_main_src1.html">別ページで表示</a>]<br>
+<iframe src="gettingStart_main_src1.html" width=624 height=200></iframe><br><br>
+
+<br><br>
+<br>-------------------------------------------------------------<br><br>
+<pageLink id="1_2">単一フォームの複数データを次画面に一括して引き渡す</pageLink>
+	<br><br>
+	
+複数の入力データがある場合、一括エクスポートが可能です<br>
+<br>
+	[イメージ図]<br>　form1_1.html<br>
+	<img src ="img_getstart/11.bmp" border="1"><br><br>
+	　↓<br><br>　form1_2.html<br>
+	<img src ="img_getstart/22.bmp" border="1"><br><br><br>
+
+[やり方]<br>	1. 以下のjsファイルを宣言します<br>
+	<blockquote>
+jquery-1.5.js<br>
+jquery.suziQ.js<br>
+jquery.suziQ.settings.js<br>
+j-star.js<br>
+	</blockquote><br><br><br>
+
+
+2.forms.htmlの&lt;body&gt;タグ内に下記を追加します<br>
+　さきほど作成したファイルに追加して、年齢を送信できるようにしましょう。<br><br>
+　これで送信元ファイルはこうなります。
+<pre class="javascript" wrap="1">
+&lt;form id="MainForm"&gt;
+  名前：&lt;input id="d" name="yourName"&gt;
+  年齢：&lt;input id="d" name="yourYear"&gt;
+ &lt;button id="btn"&gt;送信する&lt;/button&gt;
+&lt;/form&gt;<br>
+&lt;script type="text/javascript"&gt;
+var $$ = $.sq;
+$$.setup = {
+  init: function(data,messages){
+    $("#btn").sq_norequest({
+      callback: function(data) {
+        $$.ajax.to("form1_2.html",data);
+      }
+    });
+  }
+};
+&lt;/script&gt;</pre>
+<br>
+先ほどのHTMLと比べて変更された部分は、新しい年齢用のinputタグが追加された程度で
+javascript部分は遷移先URL以外何も変更されていません。
+これは、sq_norequestやsq_post系を使用する場合、J-Starがフォーム情報を自動で収集してくれるためです。
+
+<br><br>
+3.gettingStart_main_src4.htmlファイルを作成します<br>
+では次に遷移先画面を作ります。これも先ほど作った画面を利用します。<br>
+<pre class="javascript" wrap="1">
+  ようこそ&nbsp;&lt;span name ="yourName"&gt;一括インポートVer&lt;/span&gt;さん
+  あなたは&nbsp;&lt;span name ="yourYear"&gt;999&lt;/span&gt;歳ですね<br>
+&lt;script type="text/javascript"&gt;
+  $$ = $.sq;
+  $$.setup = {
+    init: function(data,messages){
+      $("span").fill(data);
+    }
+  };
+&lt;/script&gt;
+</pre><br>
+先ほどのHTMLと比べて変更された部分は、年齢用の文言とinit関数内になっています。<br>
+先ほどのHTMLではjQueryのhtml関数を利用していました。
+もちろんここでもjQueryのhtml関数を使用しても構いませんが複数のデータを扱うための便利な関数としてfillという関数をSuziQが提供しています。
+この関数ではオブジェクトのキーとname属性が一致するノード全てにデータを書き込みます。<br>
+<br>
+
+<br><br>
+4.入力チェックを行ってみましょう。<br>
+このままでも動きますが、せっかくなので入力チェックを行ってみましょう。<br>
+名前に対しては必須チェックをいれ、年齢に対しては必須チェックと文字種チェックを行うことにします。<br>
+<br>
+まず、入力チェックエラー時に赤く表示させるためにJ-Starが提供しているCSSを読み込んでおきましょう。<br>
+	<blockquote>
+j-star.css<br>
+	</blockquote>
+	<br>
+そして、以下のように遷移元HTMLを修正します。<br>
+<br>
+<pre class="javascript" wrap="1">
+&lt;form id="MainForm"&gt;
+  名前：&lt;input id="d" name="yourName"&gt;
+  年齢：&lt;input id="d" name="yourYear"&gt;
+ &lt;button id="btn"&gt;送信する&lt;/button&gt;
+&lt;/form&gt;<br>
+&lt;script type="text/javascript"&gt;
+var $$ = $.sq;
+$$.setup = {
+  messages: ["../../../js/j-star/message"], <font color="red">//①</font>
+  init: function(data,messages){
+    $("[name=yourName]").validate({require:true}).valid_message("valid.req",["名前"]); <font color="red">//②</font>
+    $("[name=yourYear]").validate({require:true,ch:"d"}).valid_message("valid.req.def",["年齢","valid.char.n"]);
+
+    $("#btn").sq_norequest({
+      callback: function(data) {
+        $$.ajax.to("form1_2.html",data);
+      }
+    });
+  }
+};
+&lt;/script&gt;</pre>
+<br>
+①でsetupオブジェクトにmessagesを設定しています。<br>
+これは入力チェックエラー時の表示するメッセージを利用するために設定しています<br>
+（もし完全に独自メッセージを利用する場合はこれは不要です）。<br>
+次に②では、名前の入力欄に入力チェックを設定しています。<br>
+validate({require:true})で必須チェックを設定しています。<br>
+そしてvalid_message("valid.req",["名前"])ではエラー時のメッセージを設定しています。<br>
+valid_messageの第1引数がmessagesオブジェクトのキーである場合、messagesオブジェクトの値が利用されます。<br>
+今、messagesオブジェクトは　../../../js/j-star/message　で指定されたJSファイルが利用されますので、<br>
+valid.reqの値は「{0}は必須です。」になっています。<br>
+valid_messageの第2引数が「{0}」などに入る値の設定です。今「名前」という値を指定しているので<br>
+エラーメッセージは「名前は必須です。」になります。
+<br><br>
+<br>
+5.作成が完了しました！実際に動かしてみましょう<br><br>	
+[<a href="gettingStart_main_src3.html">別ページで表示</a>]<br>
+<iframe src="gettingStart_main_src3.html" width=624 height=200></iframe><br><br><br>
+-------------------------------------------------------------<br>
+さきほどまでのサンプルでは、サーバにアクセスしない例でしたが、
+今度はサーバにアクセスする例を作成してみましょう。<br>
+<br>
+<pageLink id="2_1">ローカルモード・サーバーモードとは</pageLink><br>	
+<a href="../basic/mode.html">3つのモード</a>で見たとおりJ-Starは動作モードとして3つのモードを持っています。
+このうちのローカルモードとサーバーモードを、簡単なアプリケーションを作成することで確かめてみましょう。<br><br><br>
+入力した名前が末尾に登録されていくアプリケーションです<br><br>
+[イメージ図]
+<br>　top.html<br>
+	<img src ="img_getstart/111.bmp" border="1"><br><br>
+	　↓<br><br>　next.html<br>
+	<img src ="img_getstart/222.bmp" border="1"><br><br><br><br>
+	
+<pageLink id="2_1_1">プロジェクト作成</pageLink><br><br>
+IDE上で新規動的Webプロジェクト[JStar]と、対応する[JStarEAR]を作成します。
+	<img src ="img_getstart/no1.bmp" border="1"><br><br>
+	<img src ="img_getstart/no2.bmp" border="1"><br><br><br><br>
+JStarプロジェクトWebContentフォルダ直下にjsフォルダを作成し、以下のファイルをインポートします。<br><br>
+	<img src ="img_getstart/no3.bmp" border="1"><br><br>
+
+
+これで準備は完了です。まずはローカルモードの実装をしてみましょう。<br><br><br>
+
+<pageLink id="2_2">ローカルモードを実装する</pageLink><br>
+ローカルモードで実装が必要なものは、HTML、処理を行うjsファイルです。<br><br><br>
+<pageLink id="2_2_1">遷移元・遷移先HTMLの作成</pageLink><br>
+
+WebContent/htmlフォルダに遷移元・遷移先HTMLを作成します。<br><br>
+<img src ="img_getstart/no4.bmp" border="1"><br>
+suziQオブジェクトのセットアップオブジェクトのinit関数のurlオブジェクトに、
+処理を紐付けるURLを記述します。コンテキストルートから記述することに注意してください。<br><br>
+遷移元HTML:top.html
+<pre class="javascript" wrap="1">
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+&lt;script type='text/javascript' src='../js/user/jquery-1.5.js'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='../js/user/jquery.suziQ.js'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='../js/j-star/j-star.js'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='../js/user/jquery.suziQ.settings.js'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='../js/user/jquery-ui-1.8.2.custom.min.js'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='../js/user/jquery.json-2.2.min.js'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='sample_dummy.js' &gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;form id="MainForm"&gt;
+    名前を入力してください&lt;input type="text"name="name1"&gt;
+    &lt;input type="submit" name="submit" value="add"&gt;
+&lt;/form&gt;
+
+&lt;script type="text/javascript"&gt;
+
+var $$ = $.sq;
+$$.setup = {
+    init: function(data,messages){
+        $("[name=submit]").sq_post({　　　　　　　　　　<font color="red">//urlに紐づく処理を実行するためsq_post関数を定義</font>
+            url: "/JStar/Insert.json", 　　　　　　　　　　<font color="red">//URLを指定</font>
+            data: data,
+            callback: function(result,req){
+                if(result.result=="ok"){
+                    $$.ajax.to("next.html",result);
+                }
+            }
+        });
+    }
+};
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>[説明]<br>
+J-StarではSuziQオブジェクトを利用します。SuziQオブジェクトは簡易のため $$ で表されます。J-Starで最も重要なsetupオブジェクトを定義しています。
+このsetupオブジェクトで定義したinit関数が実行されJ-Starが機能します。<br>今回はボタンが押されたときにサーバーにデーターをPOSTする処理を実行したいので sq_post関数を定義します。
+サーバーでの処理が必要ない場合はsq_norequest関数を定義します（今はローカルモードなのでサーバーへのPOST処理は行われません。
+サーバーモードで動かした場合を考えて使用する関数を決めてください）<br><br>
+sq_postの中では3つのオブジェクトを定義しています。<br>
+<dt>url</dt><dd>このurlに紐づく処理が呼び出されます。ローカルモードではjQuery.sq.ajax.mock["/JStar/Insert.json"]=function(req){ }で
+定義した関数が呼び出されます。URLはコンテキストルートから記述することに気をつけてください（サーバーモードで作動しなくなるため）</dd>
+<dt>data</dt><dd>POSTしたいデータです。今回は画面から引き継がれるデータ全てがPOSTされます。</dd>
+<dt>callback</dt><dd></dd>
+URLで紐づいた処理が実行された後に実行したい処理を記述します。処理結果は1つ目の引数で受け渡されます。ajax.to関数を使って次画面に結果を引き渡しています。ajax.to関数については<a href="../api/ajax/to.html">APIガイド[to]</a>をご覧ください。
+
+
+<br><br><br><br><br><br><br>
+遷移先HTML:next.html
+<pre class="javascript" wrap="1">
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+&lt;script type='text/javascript' src='../js/user/jquery-1.5.js'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='../js/user/jquery.suziQ.js'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='../js/j-star/j-star.js'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='../js/user/jquery.suziQ.settings.js'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='../js/user/jquery-ui-1.8.2.custom.min.js'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='../js/user/jquery.json-2.2.min.js'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='sample_dummy.js' &gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ &lt;span id ="name"&gt;&lt;/span&gt;
+    &lt;form id="MainForm"&gt;続けて登録する場合は、入力してください&lt;input type="text"name="name1"&gt;
+    &lt;input type="submit" name="submit" value="add"&gt;
+&lt;/form&gt;
+
+&lt;script type="text/javascript"&gt;
+var $$ = $.sq;
+$$.setup = {
+    init: function(data,messages){
+         $("#name").html(data.name_list);　　　　　 <font color="red">//取得したdataオブジェクトのname_listプロパティ値をid=nameに挿入</font>
+        $("[name=submit]").sq_post({
+            url: "/JStar/Insert.json",
+            data: data,
+            callback: function(result,req){
+                if(result.result=="ok"){
+                    $$.ajax.to("next.html",result);
+                }
+            }
+        });
+    }
+};
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+[説明]<br>
+遷移元HTMLと同じように、セットアップオブジェクトを定義しています。
+init関数の中で$("#name").html()関数を用いて<span id ="name">タグに登録された名前一覧を表示しています。<br>
+sq_post関数は遷移元HTMLと同じ処理を行っています。
+<br><br><br><br><br>
+
+<pageLink id="2_2_2">処理を行うjsファイルの作成</pageLink><br>
+任意のjsファイルに処理を記述します。今回はWebContent/htmlフォルダ内のsample_dummy.jsに記述します。<br>
+<img src ="img_getstart/no4.bmp" border="1"><br><br><br>
+<pre class="javascript" wrap="1">
+var name_list = jQuery.sq.cookie("name_list");
+jQuery.sq.ajax.mock["/JStar/Insert.json"]=function(req){
+	if(name_list==null){name_list=new Array()}
+	name_list[name_list.length]= req.name1;　　　<font color="red">//セッションで保持しているname_listに入力値を連結します</font>
+	return {result:"ok",name_list: name_list};
+};
+</pre>
+[説明]<br>セッションに"name_list"を保持し、入力された値をそこに追加しています。今回はresultで常にOKを代入していますが、処理を振り分けることも可能です。
+<br><br><br><br>
+作成が完了しました！top.htmlを表示し動かしてみましょう。<br>
+[<a href="gettingStart_main_src5.html">別ページで表示</a>]<br>
+<iframe src="gettingStart_main_src5.html" width=624 height=200></iframe><br><br>
+このように、サーバのアクセスを代替するmockを自由に書き換えることにより、<br>あたかもサーバが存在するかのような挙動をとらせることができます。
+<br><br><br><br><br>
+<pageLink id="2_3">サーバーモードを実装する</pageLink><br>
+今度はサーバーモードを実装してみましょう。ローカルモードで使用したhtmlをそのままサーバーモードで使用します。<br><br>
+<pageLink id="2_3_0">jsonic.jarのインポート</pageLink><br>
+JStarではデフォルトではJSON方式でデータをやり取りするため、JSON操作APIライブラリであるJSONICを利用します。<br>
+※これは必須ではありません。他の方式でデータを扱うことも、他のJSON操作APIライブラリを使用することも可能です。<br><br>
+JStarEARにlibフォルダを作成し、[jsonic.jar]をインポートします。<br>
+　　	<img src ="img_getstart/no6.bmp" border="1"><br><br>
+<pageLink id="2_3_1">処理を行うJavaファイルの作成</pageLink><br>
+HttpServletを継承したNameServlet.javaをソースフォルダに作成します。<br>
+　　	<img src ="img_getstart/no7.bmp" border="1"><br><br>
+<br>
+
+NameServlet.java
+<pre class="javascript" wrap="1">
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import net.arnx.jsonic.JSON;
+
+public class NameServlet extends HttpServlet { 　　<font color="red">//HttpServletを継承</font>
+	static String name_list = "";
+
+	static class Property {　　　　　　　　　　　　　　　　　 <font color="red">//staticインナークラスを定義</font>
+		public String name1;
+	}
+
+	public void doPost(HttpServletRequest req, HttpServletResponse res)
+			throws ServletException, IOException {
+		Property property = (Property) JSON.decode(req.getInputStream(), Property.class); <font color="red">//JSONを利用して情報を取得</font>
+		String userName = property.name1;　　　　　　<font color="red">//定義したインナークラスのプロパティに値が格納される</font>
+		name_list = name_list + userName + "&lt;br&gt;";
+		PrintWriter out = res.getWriter();
+		out.print("{result:'ok',name_list:name_list}");　　<font color="red">//java.io.PrintWriterクラスを利用してデータを渡す</font>
+	}
+}
+</pre>[説明]<br>
+J-StarではJSON.decodeメソッドをつかって、定義したインナークラスのプロパティに値をセットします。
+また、java.io.PrintWriterクラスを利用してデータを渡します。<br><br><br><br>
+<pageLink id="2_3_2">web.xmlの作成</pageLink><br>
+作成したNameServlet.java をweb.xmlに登録します。<br><br>
+web.xml
+<pre class="javascript" wrap="1">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app id="WebApp_ID" version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"&gt;
+&lt;display-name&gt;JStar&lt;/display-name&gt;
+
+ &lt;servlet&gt;
+    &lt;servlet-name&gt;servletName&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;NameServlet&lt;/servlet-class&gt;
+  &lt;/servlet&gt;
+
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;servletName&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/JStar/Insert.json&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+  
+&lt;/web-app&gt;
+</pre>
+[説明]<br>
+通常のStrutsでの記述方法と同じです。web.xmlの<url-pattern>でコンテキストルートからの記述が必要なため、
+sq_post関数のurlオブジェクトをコンテキストルートから書く必要があります。
+<br><br><br>
+これで作成が完了しました。サーバーにJStarEARを追加して起動してから<br>
+<a href="http://localhost:9081/JStar/html/top.html">http://localhost:9081/JStar/html/top.html</a>をクリックしてください。<br>
+※ポート番号は環境に合わせて適宜修正してください<br><br>
+　　	<img src ="img_getstart/no8.bmp" border="1"><br><br>
+
+<br><br><br>
+このように現在のHTMLのプロトコルが「file:」になっているか「http:」になっているか<br>
+（HTMLファイルをダブルクリックなどで立ち上げたか、サーバーで起動させたか）<br>
+で、モードが切り替わることが確認できました！
+
+<br><br><br><br><br><br><br><br><br>
+
+
+
+
+
+
+
+
+	</div>
+	
+	</div>
+<!--メインのブロック終わり-->
+<!--サイドのブロック-->
+	<div id="box_side">
+		<div class="menu">
+			<h3>J-Starとは</h3>
+			<ul>
+				<li><a href="../overview.html">概要</a></li>
+				<li><a href="../suziQ_JStar.html">suziQとJ-Star</a></li>
+				<li><a href="../basic/mode.html">3つのモード</a></li>
+				<li><a href="../basic/message.html">国際化</a></li>
+				<li><a href="../debugger/debugger.html">強力なデバッガー</a></li>
+				<li><a href="../setup_obj/setup_obj.html">setup_obj</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>GetStart</h3>
+			<ul>
+				<li><a href="../getstart/gettingStart_main.html">J-Starを使ってみよう</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>API</h3>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">ajax</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/ajax/ajax.html">ajax(options)</a></li>
+					<li><a href="../api/ajax/to.html">to(url,data,selector(option))</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">dom</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/dom/createOptions(arr).html">createOptions(arr)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">format</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/format/format.html">format(options)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">inputprompt</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/inputprompt/inputprompt(string).html">inputprompt(string)</a></li>
+					<li><a href="../api/inputprompt/inputprompt(string,class).html">inputprompt(string, class)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">validator</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/validator/validate.html">validate</a></li>
+					<li><a href="../api/validator/valid_message(val).html">valid_message(val)</a></li>
+					<li><a href="../api/validator/valid_message(val,args).html">valid_message(val, args)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">suziQ</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/suziQ/fill.html">fill(data,fnc(option))</a></li>
+					<li><a href="../api/suziQ/sq_post.html">sq_post(opts)</a></li>
+					<li><a href="../api/suziQ/sq_post.html">sq_get(opts)</a></li>
+					<li><a href="../api/suziQ/sq_post.html">sq_put(opts)</a></li>
+					<li><a href="../api/suziQ/sq_post.html">sq_delete(opts)</a></li>
+					<li><a href="../api/suziQ/sq_norequest.html">sq_norequest(opts)</a></li>
+				</div>
+			</ul>
+		</div>
+	</div>
+<!--サイドのブロック終わり-->
+
+	<br class="both"><!--回り込みの解除-->
+</div>
+<!--/サイドとメインをくくる-->
+	<div id="centerbottom"></div><!--下の丸み-->
+
+
+<!--フッタ-->
+<div id="foot">
+Copyright（c）2011 IBM All rights reserved
+</div>
+<!--フッタ終わり-->
+
+
+</div>
+<!--iflameで閉じる-->
+</body>
+</html>

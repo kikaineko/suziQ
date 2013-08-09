@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-type" content="text/css">
+<title>J-Star</title>
+<script type='text/javascript' src='../../../js/user/jquery-1.5.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.json-2.2.min.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.suziQ.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.suziQ.settings.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery-ui-1.8.2.custom.min.js'></script>
+
+<script type='text/javascript' src='../../../js/j-star/j-star.js'></script>
+
+
+
+
+<link rel='stylesheet' href='../../style/j-star.css' type='text/css'>
+</head>
+<body>
+<form id="MainForm">
+名前：<input id="d" name="yourName"><br>年齢：<input id="d" name="yourYear">　<button id="btn">送信する</button>
+</form>
+<script type="text/javascript">
+var $$ = $.sq;
+$$.setup = {
+	messages: ["../../js/j-star/message"],
+	init: function(data,messages){
+		$("[name=yourName]").validate({require:true}).valid_message("valid.req",["名前"]);
+		$("[name=yourYear]").validate({require:true,ch:"d"}).valid_message("valid.req.def",["年齢","valid.char.n"]);
+		$("#btn").sq_norequest({
+			callback: function(data) {
+				$.sq.ajax.to("gettingStart_main_src4.html",data);
+			}
+		});
+	}
+};
+</script><br><br><br>
+</body>
+</html>

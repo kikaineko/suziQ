@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-type" content="text/css">
+
+<script type='text/javascript' src='../../../../js/user/jquery-1.5.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.json-2.2.min.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.suziQ.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.suziQ.settings.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery-ui-1.8.2.custom.min.js'></script>
+
+<script type='text/javascript' src='../../../../js/j-star/j-star.js'></script>
+
+
+
+
+
+
+<title>J-Star</title>
+<link rel='stylesheet' href='../../../style/style.css' type='text/css'>
+<link rel='stylesheet' href='../../../style/j-star.css' type='text/css'>
+</head>
+<body>
+
+<div id="flame">
+
+<!--ヘッダ-->
+<div id="head">
+<a href="../../top.html"><div id="logo">J-Star</div></a>
+</div>
+<!--/ヘッダ-->
+
+<!--サイドとメインをくくる-->
+<div id="center">
+	<!--メインのブロック-->
+	<div id="box_main">
+
+	<div class="main">
+	<h1>valid_message(val,args)</h1>
+	<p>validateでエラーが発生した際、表示するメッセージを設定します。<br>
+	<br>
+	valid_message(val)との違いは、固定メッセージではなく動的なメッセージを設定可能なことです。<br>
+	このvalid_message関数の第1引数は、メッセージオブジェクトのキーになります
+	（メッセージオブジェクトに関しては、XXXをご覧下さい）。
+	そして第2引数はそのメッセージに設定する値になります。
+	例えば、メッセージが以下のような場合
+<pre class="javascript" wrap="1">
+jQuery.sq.message({
+  sample_message: "{0} は {1}です."
+});
+</pre>
+	次のように使用します。
+<pre class="javascript" wrap="1">
+  valid_message("sample_message" ["foo","bar"]);
+</pre>
+	こうすると表示されるメッセージは「foor は barです.」となります。
+	<br><br>
+	その他、表示されるタイミングなどはvalid_message(val)と同一です。
+</p>
+
+<dl class="arguments"> 
+<h5>引数</h5> 
+<dt>val</dt><dd><div class="type">String</div><div class="desc">プロパティファイルに存在するキー値</div></dd> 
+<dt>args</dt><dd><div class="type">配列</div><div class="desc">キー値に対応するメッセージの変数に代入したい値</div></dd> 
+</dl> 
+ 
+<div class="return"> 
+<h5>戻り値</h5> 
+<div class="type">jQuery</div><div class="desc"> 
+   jQueryオブジェクト
+   </div> </div>
+<div class="target"> 
+  <h5>ターゲットオブジェクト</h5> 
+  jQueryオブジェクト（入力チェックを設定したいノード）
+</div>
+
+<div class="samples"> 
+<h5>サンプル</h5> 
+<h6>サンプル1</h6> 
+名前の文字種チェックを行います
+<pre class="html" wrap="1">
+&lt;form id="Sample01" name="MainForm"&gt;
+&ltspan id='name_label'&gt名前&lt/span&gt
+ &lt;input type="text" name="sample"/&gt;
+&lt;input type="button" value="SUBMIT" id='button' /&gt;
+&lt;/form&gt;
+</pre> 
+
+<pre class="javascript" wrap="1">
+$("[name=sample]").validate({ch:"aA"})
+	.valid_message("valid.def",[$("#name_label").html(),"valid.char.aA"]);
+</pre> <br>
+[<a href="valid_message(val,args)_src.html">別ページで表示</a>]<br>
+<iframe src="valid_message(val,args)_src.html"width=624></iframe><br><br>
+</div> 
+</div>
+
+
+	
+	</div>
+<!--メインのブロック終わり-->
+
+<!--サイドのブロック-->
+	<div id="box_side">
+		<div class="menu">
+			<h3>J-Starとは</h3>
+			<ul>
+				<li><a href="../../overview.html">概要</a></li>
+				<li><a href="../../suziQ_JStar.html">suziQとJ-Star</a></li>
+				<li><a href="../../basic/mode.html">3つのモード</a></li>
+				<li><a href="../../basic/message.html">国際化</a></li>
+				<li><a href="../../debugger/debugger.html">強力なデバッガー</a></li>
+				<li><a href="../../setup_obj/setup_obj.html">setup_obj</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>GetStart</h3>
+			<ul>
+				<li><a href="../../getstart/gettingStart_main.html">J-Starを使ってみよう</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>API</h3>
+			<h3>API</h3>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">ajax</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/ajax/ajax.html">ajax(options)</a></li>
+					<li><a href="../../api/ajax/to.html">to(url,data,selector(option))</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">dom</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/dom/createOptions(arr).html">createOptions(arr)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">format</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/format/format.html">format(options)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">inputprompt</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/inputprompt/inputprompt(string).html">inputprompt(string)</a></li>
+					<li><a href="../../api/inputprompt/inputprompt(string,class).html">inputprompt(string, class)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">validator</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/validator/validate.html">validate</a></li>
+					<li><a href="../../api/validator/valid_message(val).html">valid_message(val)</a></li>
+					<li><a href="../../api/validator/valid_message(val,args).html">valid_message(val, args)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">suziQ</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/suziQ/fill.html">fill(data,fnc(option))</a></li>
+					<li><a href="../../api/suziQ/sq_post.html">sq_post(opts)</a></li>
+					<li><a href="../../api/suziQ/sq_post.html">sq_get(opts)</a></li>
+					<li><a href="../../api/suziQ/sq_post.html">sq_put(opts)</a></li>
+					<li><a href="../../api/suziQ/sq_post.html">sq_delete(opts)</a></li>
+					<li><a href="../../api/suziQ/sq_norequest.html">sq_norequest(opts)</a></li>
+				</div>
+			</ul>
+		</div>
+	</div>
+<!--サイドのブロック終わり-->
+
+	<br class="both"><!--回り込みの解除-->
+</div>
+<!--/サイドとメインをくくる-->
+	<div id="centerbottom"></div><!--下の丸み-->
+
+
+<!--フッタ-->
+<div id="foot">
+Copyright（c）2011 IBM All rights reserved
+</div>
+<!--フッタ終わり-->
+
+
+</div>
+<!--iflameで閉じる-->
+</body>
+</html>

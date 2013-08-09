@@ -1,0 +1,42 @@
+.content {
+padding: 10px 10px 10px 0;
+width: 540px;
+}
+
+.content h2 {
+color: #FAF391;
+font-size: 28px;
+letter-spacing: -2px;
+font-weight: 100;
+padding: 10px 0 10px 0;
+#text-transform: uppercase;
+}
+.content h2 a { }
+.content h2 a:hover { text-decoration: none; }
+
+
+
+.api{
+	border: 1px solid #ccc;
+	padding: 5px;
+	margin: 5px;
+	width: 550px;
+}
+
+.api h3 {
+	background-color: #ccc;
+	color: #333;
+	padding: 2px;
+	margin-bottom: 5px;
+	cursor: pointer;
+}
+
+.api li {
+	list-style: none;
+	margin-left: 15px;
+}
+
+.api li strong {
+	color: #f33;
+}
+
