@@ -1,8 +1,8 @@
-/*ƒy[ƒW‘S‘Ì‚Ìw’è*/
+/*ãƒšãƒ¼ã‚¸å…¨ä½“ã®æŒ‡å®š*/
 *{
 	margin:0;
 	padding:0;
-	font:normal normal 100% "‚l‚r ƒSƒVƒbƒN";
+	font:normal normal 100% "ï¼­ï¼³ ã‚´ã‚·ãƒƒã‚¯";
 }
 
 body{
@@ -14,7 +14,7 @@ color:#666666;
 }
 
 
-/*ƒy[ƒW‚Ì—ÖŠs*/
+/*ãƒšãƒ¼ã‚¸ã®è¼ªéƒ­*/
 #flame{
 	width: 950px;
 	margin:0 auto;
@@ -22,7 +22,7 @@ color:#666666;
 
 
 
-/*ƒTƒCƒg–¼‘OFƒƒS‚ğ“ü‚ê‚½‚è‚µ‚Ä‚­‚¾‚³‚¢*/
+/*ã‚µã‚¤ãƒˆåå‰ï¼šãƒ­ã‚´ã‚’å…¥ã‚ŒãŸã‚Šã—ã¦ãã ã•ã„*/
 #logo{
 	text-align: right; 
 	font-size:300%;
@@ -32,7 +32,7 @@ color:#666666;
 	}
 
 
-/*ƒTƒCƒh‚ÆƒƒCƒ“‚ğ‚­‚­‚é*/
+/*ã‚µã‚¤ãƒ‰ã¨ãƒ¡ã‚¤ãƒ³ã‚’ããã‚‹*/
 
 #center{
 	background-color: #ffffff;
@@ -40,7 +40,7 @@ color:#666666;
 		
 
 				
-/*ƒTƒCƒh‚ÌƒuƒƒbƒN*/
+/*ã‚µã‚¤ãƒ‰ã®ãƒ–ãƒ­ãƒƒã‚¯*/
 #box_side{
 	width: 240px;
 	float: left;
@@ -89,13 +89,13 @@ font-weight: bolder;
 
 			
 
-/*‰E‚ÌƒuƒƒbƒN*/
+/*å³ã®ãƒ–ãƒ­ãƒƒã‚¯*/
 #box_main{
 	width: 700px;
 	float: right;
 }
 
-/*‰E‚Ìƒ^ƒCƒgƒ‹•”•ª*/
+/*å³ã®ã‚¿ã‚¤ãƒˆãƒ«éƒ¨åˆ†*/
 h1,h2{
 	font-size:18px;
 	font-family:Tahoma;
@@ -105,7 +105,7 @@ h1,h2{
 	padding:5px 0 0 10px;
 	}
 	
-	/*ƒƒCƒ“‚Ì‹L–‚Ì•”•ª*/
+	/*ãƒ¡ã‚¤ãƒ³ã®è¨˜äº‹ã®éƒ¨åˆ†*/
 	
 	.submain{
 		margin:0px 10px 0 10px;
@@ -114,13 +114,13 @@ h1,h2{
 		margin:20px 20px 0 20px;
 		}
 		
-	/*–{•¶‚ğ‚­‚é*/
+	/*æœ¬æ–‡ã‚’ãã‚‹*/
 	p{
 		padding:15px 7px;
 		line-height:150%;
 		}
 		
-	/*ˆø—p•¶*/
+	/*å¼•ç”¨æ–‡*/
 	blockquote{
 		margin:10px;
 		padding:5px;
@@ -128,7 +128,7 @@ h1,h2{
 		border:1px solid #cccccc;
 		}
 	
-	/*‹­’²•¶*/
+	/*å¼·èª¿æ–‡*/
 	strong{
 		font-weight: 700;
 		}
@@ -142,7 +142,7 @@ h1,h2{
 		padding:2px 0px ;
 		}
 		
-	/*Ú×*/
+	/*è©³ç´°*/
 	.sub{
 		margin:5px 10px 10px 15px ;
 		}
@@ -273,7 +273,7 @@ pre.javascript {
 
 
 
-/*’˜ìŒ •\¦‚Ì•”•ª‚Â‚Ü‚èƒtƒbƒ^*/
+/*è‘—ä½œæ¨©è¡¨ç¤ºã®éƒ¨åˆ†ã¤ã¾ã‚Šãƒ•ãƒƒã‚¿*/
 #foot{
 	text-align: right; 
 	color:#F5F5F5;
@@ -284,5 +284,3 @@ pre.javascript {
 .both{
 	clear:both;
 	}
-		
-		
