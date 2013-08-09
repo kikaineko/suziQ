@@ -1,0 +1,250 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-type" content="text/css">
+
+
+
+<script type='text/javascript' src='../../../js/user/jquery-1.5.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.json-2.2.min.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.suziQ.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.suziQ.settings.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery-ui-1.8.2.custom.min.js'></script>
+
+<script type='text/javascript' src='../../../js/j-star/j-star.js'></script>
+
+
+
+
+
+
+
+<title>J-Star</title>
+<link rel='stylesheet' href='../../style/style.css' type='text/css'>
+<link rel='stylesheet' href='../../style/j-star.css' type='text/css'>
+</head>
+<body>
+
+<div id="flame">
+<!--ヘッダ-->
+<div id="head">
+<a href="../top.html"><div id="logo">J-Star</div></a>
+</div>
+<!--/ヘッダ-->
+
+
+<!--サイドとメインをくくる-->
+<div id="center">
+<div id="centertop"></div>
+	<!--メインのブロック-->
+	<div id="box_main">
+	<div class="main">
+	<h1>3つのモード</h1>
+	<p>
+	J-Starは動作モードとして以下の3つのモードを持っています。<br>
+	これらのモードは実行できることが異なりますので、注意が必要です。<br>
+	<br>
+	Local mode<br>
+	Server mode<br>
+	Production mode<br>
+
+	</p>
+
+<dl class="arguments"> 
+  <h5>Local mode</h5>
+  <dt>概要</dt>
+  <dd>
+  <div class="desc">
+  ローカルモードは、サーバ無しにHTMLを開いたモードです。<br>
+つまり、HTMLファイルをダブルクリックするなどして立ち上げた状態になります。<br>
+これは、サーバ無しに画面の正確な挙動を確認するために利用されるモードです。<br>
+<br>
+サーバのアクセスを代替するmockを自由に書き換えることによって
+まるでサーバが存在するかのような挙動をとらせることができます。<br>
+（ローカルモードとサーバモードの違いは、サーバからデータが貰えるかどうかだけですので画面内の挙動は完全に同一です）
+<br>
+ただし、ローカルモードにおいてもmock関数が定義されていない場合はサーバアクセスを試みられます。<br>
+<br>
+このモードはSuziQによって自動で判別されます。<br>
+現在のHTMLのプロトコルが「file:」になっていると、ローカルモードだと判定されます。
+ </div></dd><br>
+ <dt>他のモードとの違い</dt>
+  <dd>
+  <div class="desc">
+  他のモードとローカルモードの最大の違いは、サーバにアクセスするかしないかですが、
+  他にもいくつかの違いがあります。<br>
+  <br>
+  まず、ローカルモードでは国際化機能は動きません。
+  多くの場合OSの言語が取得されるため、ブラウザの言語を変更しても、変更は起きません。<br>
+  これはJ-Starにおけるロケ－ルの取得方法がサーバへの問い合わせ結果になっているためです。<br>
+  <br>
+  現在のロケールは「$$.locale();」の返り値で確認できます。<br>
+  <br>
+  <br>
+  画面遷移の機能である「$$.ajax.to」関数が動作しない場合があります（サーバモード・Productionモードでは問題なく動作します）。<br>
+  これはブラウザ毎に差が現れます。現在動作確認が取れているのは以下のブラウザです。<br><br>
+  firefox 3 or 4<br>
+  Safari 5<br>
+  Opera 11<br>
+  IE 7<br>
+  <br>
+  逆に動作しないことが確認されているブラウザは以下です。<br>
+  chrome<br>
+  IE 6<br>
+  <br>
+  繰り返しになりますが、これはローカルモード特有であり、サーバモード・Productionモードでは問題なく動作します。<br>
+ </div></dd>
+</dl>
+
+<dl class="arguments"> 
+  <h5>Server mode</h5>
+  <dt>概要</dt>
+  <dd>
+  <div class="desc">
+  サーバモードは、実際にサーバにアクセスを起こすモードです。
+  ある意味もっとも普通のモードといえます。<br>
+  <br>
+  サーバモードはmock関数以外の全ての機能が使用できます。<br>
+  <br>
+  このモードはJ-Starが自動で判定します。
+  つまり、ローカルモードでもProductionモードのどちらでも無ければ、サーバモードであると判定されます。
+ </div></dd><br>
+</dl>
+<dl class="arguments"> 
+  <h5>Production mode</h5>
+  <dt>概要</dt>
+  <dd>
+  <div class="desc">
+  Productionモードは、サーバモードに制限を加えた本番用のモードです。<br>
+  <br>
+  以下の機能が使用不可能になります。<br>
+  デバッガー<br>
+  ログ関数<br>
+  <br>
+  ログ関数（$$.log）は、HTMLのJS内で呼ばれていても実際には何も実行されません。<br>
+  <br>
+ </div></dd><br>
+ <dt>Productionモード指定の2つの方法</dt>
+  <dd>
+  <div class="desc">
+  1．このモードは自動では判定されません。ユーザが明示的に指定する必要があります。<br>
+  以下のコードをsetting.jsに記述してください。<br>
+  <br>
+  jQuery.sq.production=true;<br>
+  <br>
+  2．J-Starではデバッガー機能を削除したjsファイルも配布しています。<br>
+  こちらのファイルに変更するだけで本番モードと同一になります。
+  <br>
+  </div>
+  </dd>
+</dl>
+
+
+</div>
+
+
+	
+	</div>
+<!--メインのブロック終わり-->
+
+
+<!--サイドのブロック-->
+	<div id="box_side">
+		<div class="menu">
+			<h3>J-Starとは</h3>
+			<ul>
+				<li><a href="../overview.html">概要</a></li>
+				<li><a href="../suziQ_JStar.html">suziQとJ-Star</a></li>
+				<li><a href="../basic/mode.html">3つのモード</a></li>
+				<li><a href="../basic/message.html">国際化</a></li>
+				<li><a href="../debugger/debugger.html">強力なデバッガー</a></li>
+				<li><a href="../setup_obj/setup_obj.html">setup_obj</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>GetStart</h3>
+			<ul>
+				<li><a href="../getstart/gettingStart_main.html">J-Starを使ってみよう</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>API</h3>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">ajax</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/ajax/ajax.html">ajax(options)</a></li>
+					<li><a href="../api/ajax/to.html">to(url,data,selector(option))</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">dom</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/dom/createOptions(arr).html">createOptions(arr)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">format</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/format/format.html">format(options)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">inputprompt</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/inputprompt/inputprompt(string).html">inputprompt(string)</a></li>
+					<li><a href="../api/inputprompt/inputprompt(string,class).html">inputprompt(string, class)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">validator</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/validator/validate.html">validate</a></li>
+					<li><a href="../api/validator/valid_message(val).html">valid_message(val)</a></li>
+					<li><a href="../api/validator/valid_message(val,args).html">valid_message(val, args)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">suziQ</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/suziQ/fill.html">fill(data,fnc(option))</a></li>
+					<li><a href="../api/suziQ/sq_post.html">sq_post(opts)</a></li>
+					<li><a href="../api/suziQ/sq_post.html">sq_get(opts)</a></li>
+					<li><a href="../api/suziQ/sq_post.html">sq_put(opts)</a></li>
+					<li><a href="../api/suziQ/sq_post.html">sq_delete(opts)</a></li>
+					<li><a href="../api/suziQ/sq_norequest.html">sq_norequest(opts)</a></li>
+				</div>
+			</ul>
+		</div>
+	</div>
+<!--サイドのブロック終わり-->
+
+	<br class="both"><!--回り込みの解除-->
+</div>
+<!--/サイドとメインをくくる-->
+	<div id="centerbottom"></div><!--下の丸み-->
+
+
+<!--フッタ-->
+<div id="foot">
+Copyright（c）2011 IBM All rights reserved
+</div>
+<!--フッタ終わり-->
+
+
+</div>
+<!--iflameで閉じる-->
+</body>
+</html>

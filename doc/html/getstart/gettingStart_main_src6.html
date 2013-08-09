@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-type" content="text/css">
+<title>J-Star</title>
+
+<script type='text/javascript' src='../../../js/user/jquery-1.5.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.json-2.2.min.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.suziQ.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.suziQ.settings.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery-ui-1.8.2.custom.min.js'></script>
+
+<script type='text/javascript' src='../../../js/j-star/j-star.js'></script>
+
+</head>
+<body>
+ <span id ="name"></span><br>
+    <form id="MainForm">続けて登録する場合は、入力してください<br><input type="text"name="name1">
+    <input type="submit" name="submit" value="add">
+</form>
+
+<script type="text/javascript">
+var $$ = $.sq;
+$$.setup = {
+    init: function(data,messages){
+         $("#name").html(data.name_list.join("<br>"));
+        $("[name=submit]").sq_post({
+            url: "/JStar/Insert.json",
+            data: data,
+            callback: function(result,req){
+                if(result.result=="ok"){
+                    $$.ajax.to("gettingStart_main_src6.html",result);
+                }
+            }
+        });
+    }
+};
+</script>
+</body>
+</html>

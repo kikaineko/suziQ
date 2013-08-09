@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script type='text/javascript' src='../../../../js/user/jquery-1.5.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.json-2.2.min.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.suziQ.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.suziQ.settings.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery-ui-1.8.2.custom.min.js'></script>
+
+<script type='text/javascript' src='../../../../js/j-star/j-star.js'></script>
+
+
+
+
+
+
+
+
+
+<title>J-Star</title>
+<link rel='stylesheet' href='../../../style/j-star.css' type='text/css'>
+</head>
+<body>
+
+<script type="text/javascript">
+var $$ = $.sq;
+		var isTOM = function(data){
+			return data != "TOM";
+		};
+		var same = function(data){
+			alert("oooo");
+			alert($("p1").val());
+			return data == $(str).val();
+		};
+$$.setup = {
+	messages: ['../../../js/j-star/message'],
+	init: function(data,messages){
+		$("[name=no]").validate(
+									{require:true, ch: "daA"}
+									).valid_message(
+									"valid.req.def",[$("#no").html(),"valid.char.aAn"]
+									);
+		$("[name=name]").validate({require:true,ch: " aA", custom:isTOM}).valid_message("名前は半角英字か半角空白のみ許可。TOMは不可。");
+		$("[name=p1]").validate({require:true, same:$("[name=p2]")}).valid_message("項目１と項目２は同じ値でないといけません");
+
+		$("#button").sq_norequest({
+			callback: function(data,req){}
+		});
+	}
+};
+</script>
+<form id="Sample01" name="MainForm">
+会員番号<input type="text" name="no"/><br>
+名前　　　<input type="text" name="name"/><br>
+項目１　　<input type="text" name="p1"/><br>
+項目２　　<input type="text" name="p2"/><br><br>
+		<input type="button" value="SUBMIT" id='button' />
+</form>
+</body>
+</html>

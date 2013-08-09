@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script type='text/javascript' src='../../../../js/user/jquery-1.5.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.json-2.2.min.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.suziQ.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.suziQ.settings.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery-ui-1.8.2.custom.min.js'></script>
+
+<script type='text/javascript' src='../../../../js/j-star/j-star.js'></script>
+
+
+
+
+
+
+<title>J-Star</title>
+<link rel='stylesheet' href='../../../style/j-star.css' type='text/css'>
+</head>
+<body><br>
+data=[{value:"A00",label:"AAAA"},{value:"B01",label:"BBBB"}];<br>
+after_data=$$.createOptions(data);<br><br>
+alert(after_data[0].outerHTML());<br><br>
+<input type="button" id="btn" value="表示"> 
+<script type="text/javascript">
+var $$ = $.sq;
+$$.setup = {
+	init: function(data,messages){
+		data=[{value:"A00",label:"AAAA"},{value:"B01",label:"BBBB"}];
+    $("#btn").click(function(){ 
+		after_data=$$.createOptions(data);
+		alert(after_data[0].outerHTML());
+    });
+	} 
+}
+</script>
+
+</body>
+</html>

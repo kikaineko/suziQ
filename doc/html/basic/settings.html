@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-type" content="text/css">
+
+
+
+<script type='text/javascript' src='../../../js/user/jquery-1.5.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.json-2.2.min.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.suziQ.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.suziQ.settings.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery-ui-1.8.2.custom.min.js'></script>
+
+<script type='text/javascript' src='../../../js/j-star/j-star.js'></script>
+
+
+
+
+
+
+
+<title>J-Star</title>
+<link rel='stylesheet' href='../../style/style.css' type='text/css'>
+<link rel='stylesheet' href='../../style/j-star.css' type='text/css'>
+</head>
+<body>
+<!--ヘッダ-->
+<div id="head">
+<a href="../top.html"><div id="logo">J-Star</div></a>
+</div>
+<div id="flame">
+<!--/ヘッダ-->
+
+
+<!--サイドとメインをくくる-->
+<div id="center">
+<div id="centertop"></div>
+	<!--メインのブロック-->
+	<div id="box_main">
+
+	<div class="main">
+	<h1>settings.js</h1>
+	<p>
+	J-Starでは「jquery.suziQ.settings.js」で設定を変更することができます。
+	利用可能な設定は以下の通りです。
+	<br><br>
+<h3>国際化に関する設定</h3>
+<dt>jQuery.sq.settings.locale_path</dt><dd>
+ロケールを決定するサービスのURLを設定します。<br>
+この値がnull（あるいはundefined）になっている場合、国際化機能がOFFになります。<br>
+</dd>
+<dt>jQuery.sq.settings.message_charset</dt><dd>
+メッセージファイルを読み込むときのcharsetを設定します。<br>
+</dd>
+<dt>jQuery.sq.settings.locale_currency</dt><dd>
+ロケールに合わせた通貨記号を設定します。ロケールをキーに、通貨記号を値にしたオブジェクトを設定してください。<br>
+</dd>
+
+<br>
+<h3>入力チェックに関する設定</h3>
+<dt>jQuery.sq.settings.validate_err_class</dt><dd>
+入力チェックエラーになったときに、使用されるCSS<br>
+</dd>
+<dt>jQuery.sq.settings.form_validate_message_area_selector</dt><dd>
+フォーム全体の入力チェックでエラーがでた場合に出力されるノードのCSSセレクター<br>
+デフォルトは「#err」。このセレクターでノードが見つからない場合、フォームの先頭にエラーメッセージが表示されます。
+</dd>
+<dt>jQuery.sq.settings.validate_tip</dt><dd>
+テキストフィールドに入力した際に実行される入力チェックでエラーが起きた際に、バルーンを出すかどうかを決定します。
+trueの場合、出力されます。<br>
+</dd>
+<dt>jQuery.sq.settings.validate_tip_position</dt><dd>
+入力エラーのバルーンがどこに出るのかを設定します。デフォルトは「right」です。<br>
+</dd>
+<br>
+<h3>ajaxに関する設定</h3>
+<dt>jQuery.sq.settings.ajax_dataType</dt><dd>
+jQueryのajax関数のdataTypeの値を設定します。デフォルトは「text」です。<br>
+</dd>
+<br><br>
+<h3>その他の設定</h3>
+<dt>jQuery.sq.settings.debugger_keycodes</dt><dd>
+デバッガーを起動するためのキーコードを設定します。デフォルトは [16,17,18,32]　という配列です。
+これはWindowsでは、「Ctrl + Shift + Alt + Space」です。<br>
+</dd>
+<br><br>
+
+</div>
+</div>
+<!--メインのブロック終わり-->
+
+
+<!--サイドのブロック-->
+	<div id="box_side">
+		<div class="menu">
+			<h3>J-Starとは</h3>
+			<ul>
+				<li><a href="../overview.html">概要</a></li>
+				<li><a href="../suziQ_JStar.html">suziQとJ-Star</a></li>
+				<li><a href="../basic/mode.html">3つのモード</a></li>
+				<li><a href="../basic/message.html">国際化</a></li>
+				<li><a href="../debugger/debugger.html">強力なデバッガー</a></li>
+				<li><a href="../setup_obj/setup_obj.html">setup_obj</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>GetStart</h3>
+			<ul>
+				<li><a href="../getstart/gettingStart_main.html">J-Starを使ってみよう</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>API</h3>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">ajax</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/ajax/ajax.html">ajax(options)</a></li>
+					<li><a href="../api/ajax/to.html">to(url,data,selector(option))</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">dom</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/dom/createOptions(arr).html">createOptions(arr)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">format</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/format/format.html">format(options)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">inputprompt</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/inputprompt/inputprompt(string).html">inputprompt(string)</a></li>
+					<li><a href="../api/inputprompt/inputprompt(string,class).html">inputprompt(string, class)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">validator</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/validator/validate.html">validate</a></li>
+					<li><a href="../api/validator/valid_message(val).html">valid_message(val)</a></li>
+					<li><a href="../api/validator/valid_message(val,args).html">valid_message(val, args)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">suziQ</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/suziQ/fill.html">fill(data,fnc(option))</a></li>
+					<li><a href="../api/suziQ/sq_post.html">sq_post(opts)</a></li>
+					<li><a href="../api/suziQ/sq_post.html">sq_get(opts)</a></li>
+					<li><a href="../api/suziQ/sq_post.html">sq_put(opts)</a></li>
+					<li><a href="../api/suziQ/sq_post.html">sq_delete(opts)</a></li>
+					<li><a href="../api/suziQ/sq_norequest.html">sq_norequest(opts)</a></li>
+				</div>
+			</ul>
+		</div>
+	</div>
+<!--サイドのブロック終わり-->
+
+	<br class="both"><!--回り込みの解除-->
+</div>
+<!--/サイドとメインをくくる-->
+	<div id="centerbottom"></div><!--下の丸み-->
+
+
+<!--フッタ-->
+<div id="foot">
+Copyright（c）2011 IBM All rights reserved
+</div>
+<!--フッタ終わり-->
+
+
+</div>
+<!--iflameで閉じる-->
+</body>
+</html>

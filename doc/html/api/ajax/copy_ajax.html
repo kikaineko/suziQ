@@ -1,0 +1,245 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-type" content="text/css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type='text/javascript' src='../../../../js/j-star/j-star.js'></script>
+<title>J-Star</title>
+<link rel='stylesheet' href='../../../style/style.css' type='text/css'>
+<link rel='stylesheet' href='../../../style/j-star.css' type='text/css'>
+</head>
+<body>
+
+<div id="flame">
+<!--ヘッダ-->
+<div id="head">
+<a href="../../top.html"><div id="logo">J-Star</div></a>
+</div>
+<!--/ヘッダ-->
+
+
+<!--サイドとメインをくくる-->
+<div id="center">
+<div id="centertop"></div>
+	<!--メインのブロック-->
+	<div id="box_main">
+
+	<div class="main">
+	<h1>ajax(options)</h1>
+	<p>
+	HTTP通信をする基本となる関数です。J-Starを使う場合、jQuery.ajaxはこの関数で置き換えられます（と言っても、通常のjQuery.ajaxと完全に同じ挙動を取ります）。
+	元々のjQuery.ajaxはjQuery.sq.ajax.original_ajaxとして呼び出すことができます。<br>
+	<br>
+	ボタン押下などでサーバアクセスを行う場合、この関数を使うよりもsq_postやsq_get関数を利用してください。<br>
+	<br>
+	この関数はjQuery.ajaxで設定できる全ての設定値が利用可能で、
+	さらにJ-Star用に指定できる引数が存在します。</p>
+<dt>url</dt>
+<dd>必須。これはjQueryのajaxと同等の定義です。<br>
+</dd>
+
+<dt>form_id</dt>
+<dd>任意。form_idを指定します。このIDが指すフォームのデータを送信します。<br>
+</dd>
+<dt>callback</dt>
+<dd>任意。callbackには関数を指定します。callbackは通信が成功した際に実行されます。<br>
+引数は2つです。第1引数はサーバの返り値で、第2引数はサーバに送信した情報になります。<br>
+<br>
+callback関数は、success内部でコールされるため、callbackとsuccessを同時に定義することはできません。
+</dd>
+<dt>data</dt>
+<dd>任意。送信されるdataを指定します。
+form_idが指定されている場合、フォーム情報にこのdataの情報をマージしたデータを送信します。<br>
+</dd>
+<dt>mock</dt>
+<dd>任意。LocalModeで実行されるサーバの代替となる関数を定義します。
+この関数は引数は一つで、サーバに送信されるデータが渡されます。また、返り値はサーバからの返り値として使われます。
+<br>
+</dd>
+<dt>dataType</dt>
+<dd>任意。これはjQueryのajaxと同等の定義です。dataタイプを指定します。デフォルトは「text」です。<br>
+</dd>
+<dt>error</dt>
+<dd>任意。これはjQueryのajaxと同等の定義です。error関数を指定します。
+デフォルトはログを出力ようになっています。<br>
+</dd>
+<dt>parse</dt>
+<dd>任意。サーバからの返り値をJavascriptオブジェクトに変換する関数を定義します。
+デフォルトではJSON文字列をオブジェクトに変換します。<br>
+</dd>
+<dt>encode</dt>
+<dd>任意。サーバに送信するデータを文字列に変換する関数を定義します。
+デフォルトではJSON文字列に変換されます。<br>
+</dd>
+<dt>pre_proc</dt>
+<dd>任意。callback関数を呼び出す前に呼び出される関数を定義できます。
+引数はsuccess関数と同じです。もしこの関数でfalseを返した場合、callback関数は呼び出されません。
+<br>
+</dd>
+<dt>ajax</dt>
+<dd>任意。jQueryのajax関数を使用したくない場合に、これを定義してください。<br>
+</dd>
+<dt>form2obj</dt>
+<dd>任意。フォーム情報をJavascriptのオブジェクトに変換する関数を定義できます。
+デフォルトでは、jQuery.sq.form2obj関数が使用されています。
+<br>
+</dd>
+<dt>success</dt>
+<dd>任意。これはjQueryのajaxと同等の定義です。
+通信成功時に実行される関数を定義します。successとcallbackを同時に定義することはできません。
+<br>
+</dd>
+
+
+<br><br>
+<div class="return"> 
+<h5>戻り値</h5> 
+<div class="type">jQuery</div><div class="desc"> 
+   jQueryオブジェクト
+   </div></dd> 
+</div> 
+<div class="target"> 
+  <h5>ターゲットオブジェクト</h5> 
+  SuziQオブジェクト
+</div>
+<div class="samples"> 
+<h5>サンプル</h5> 
+<h6>サンプル1</h6> 
+
+<pre class="html" wrap="1">
+&lt;form id="ff" &gt;
+&lt;input type="text" name="xxx" value="1234" /&gt;
+&lt;/form&gt;
+</pre> 
+
+<pre class="javascript" wrap="1">
+$$.ajax({
+	url: "hoge",
+	type: "POST",
+	form_id: "ff"
+});
+</pre> <br>
+このようにすると、ajax関数は「http://あなたのホスト/hoge」にアクセスします。
+そのとき送信されるデータは「{xxx:"1234"}」というJSON文字列になります。
+</div> 
+</div>
+
+
+	
+	</div>
+<!--メインのブロック終わり-->
+
+
+<!--サイドのブロック-->
+	<div id="box_side">
+		<div class="menu">
+			<h3>J-Starとは</h3>
+			<ul>
+				<li><a href="../../overview.html">概要</a></li>
+				<li><a href="../../suziQ_JStar.html">suziQとJ-Star</a></li>
+				<li><a href="../../basic/mode.html">3つのモード</a></li>
+				<li><a href="../../basic/message.html">国際化</a></li>
+				<li><a href="../../debugger/debugger.html">強力なデバッガー</a></li>
+				<li><a href="../../setup_obj/setup_obj.html">setup_obj</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>GetStart</h3>
+			<ul>
+				<li><a href="../../getstart/gettingStart_main.html">J-Starを使ってみよう</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>API</h3>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">ajax</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/ajax/ajax.html">ajax(options)</a></li>
+					<li><a href="../../api/ajax/to.html">to(url,data,selector(option))</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">dom</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/dom/createOptions(arr).html">createOptions(arr)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">format</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/format/format.html">format(options)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">inputprompt</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/inputprompt/inputprompt(string).html">inputprompt(string)</a></li>
+					<li><a href="../../api/inputprompt/inputprompt(string,class).html">inputprompt(string, class)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">validator</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/validator/validate.html">validate</a></li>
+					<li><a href="../../api/validator/valid_message(val).html">valid_message(val)</a></li>
+					<li><a href="../../api/validator/valid_message(val,args).html">valid_message(val, args)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">suziQ</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/suziQ/fill.html">fill(data,fnc(option))</a></li>
+					<li><a href="../../api/suziQ/sq_post.html">sq_post(opts)</a></li>
+					<li><a href="../../api/suziQ/sq_post.html">sq_get(opts)</a></li>
+					<li><a href="../../api/suziQ/sq_post.html">sq_put(opts)</a></li>
+					<li><a href="../../api/suziQ/sq_post.html">sq_delete(opts)</a></li>
+					<li><a href="../../api/suziQ/sq_norequest.html">sq_norequest(opts)</a></li>
+				</div>
+			</ul>
+		</div>
+	</div>
+<!--サイドのブロック終わり-->
+
+	<br class="both"><!--回り込みの解除-->
+</div>
+<!--/サイドとメインをくくる-->
+	<div id="centerbottom"></div><!--下の丸み-->
+
+
+<!--フッタ-->
+<div id="foot">
+Copyright（c）2011 IBM All rights reserved
+</div>
+<!--フッタ終わり-->
+
+
+</div>
+<!--iflameで閉じる-->
+</body>
+</html>

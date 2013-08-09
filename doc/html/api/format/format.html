@@ -1,0 +1,325 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-type" content="text/css">
+
+
+<script type='text/javascript' src='../../../../js/user/jquery-1.5.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.json-2.2.min.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.suziQ.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.suziQ.settings.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery-ui-1.8.2.custom.min.js'></script>
+
+<script type='text/javascript' src='../../../../js/j-star/j-star.js'></script>
+
+
+
+
+
+
+<title>J-Star</title>
+<link rel='stylesheet' href='../../../style/style.css' type='text/css'>
+<link rel='stylesheet' href='../../../style/j-star.css' type='text/css'>
+</head>
+<body>
+
+<div id="flame">
+<!--ヘッダ-->
+<div id="head">
+<a href="../../top.html"><div id="logo">J-Star</div></a>
+</div>
+<!--/ヘッダ-->
+
+
+<!--サイドとメインをくくる-->
+<div id="center">
+<div id="centertop"></div>
+	<!--メインのブロック-->
+	<div id="box_main">
+
+	<div class="main">
+	<h1>format(options)</h1>
+	<p>
+	optionsで指定されたformat設定を行います。<br>
+	<br>
+	このformat関数は、ターゲットのテキストボックスなどにフォーマットの定義を行うだけで
+	実際にはこのformat関数によってフォーマットが実行されるわけではありません。<br>
+	フォーマットが実行されるタイミングは、テキストボックスにchangeイベントが発生したタイミングです。<br>
+	<br>
+	<span style="color:blue;font-weight:bold;">★アンフォーマット</span><br>
+	また、実際サーバに送信されるデータはフォーマットされたデータではなく、
+	アンフォーマットされたデータが送信されます。
+	例えば{date: '-'}と設定したフィールドに、「123456」と入力するとJ-Starによって
+	「12-34-56」と自動で変換されます。つまり、フィールド上には「12-34-56」と表示されることになります。
+	ですが、この「12-34-56」がサーバに送信されるわけではなく、
+	このデータをアンフォーマットした「123456」がサーバに送信されます。
+	<br>
+	<br><br>
+	このformat関数の引数（options）は配列です。
+	配列の中身は、キーと値の組み合わせたオブジェクトになります。
+	この配列によってフォーマットの順序が決定されます（配列の先頭から順にフォーマットが実施され、末尾からアンフォーマットが実施されます）。
+	<br><br>
+	キー名、値の型は以下の通りです。</p>
+<dt>date / String</dt><dd>値に指定された文字で数字を区切ります。<br><br>
+入力値が1桁以上6桁以下の場合、00-00-00の形に整形します。5桁以下の場合、左側に0をつめ6桁にして表示します。<br>(例:111⇒00-01-11)<br><br>
+入力値が7桁以上8桁以下の場合、0000-00-00の形に整形します。7桁の場合、左側に0をつめ8桁にして表示します<br>(例:1234567⇒0123-45-67)<br><br>
+入力値が9桁以上の場合、右側9桁目以降は切り捨てます。<br>(例:1999090811⇒1999-09-08)<br><br>
+<br></dd>
+<dt> integer /String </dt>
+<dd>
+このformatでは、先頭の0の削除、小数点以下の切捨を行った後、対応する値に応じてformat処理を行います。
+なお、数字以外の文字は無視されます（ピリオドを除く）。対応する引数は以下の通りです。
+</dd>
+<dt> integer /"%" </dt>
+<dd>
+末尾に%を追加します
+</dd>
+<dt> integer /"," </dt>
+<dd>
+カンマで3桁ずつ区切ります
+</dd>
+<dt> integer /"C" </dt>
+<dd>OSの国状況に合わせて先頭に通貨記号が追加されます。
+</dd>
+<dt> integer /"C=[localecode]" </dt>
+<dd>
+"C=hoge"で指定された国状況に合わせて先頭に通貨記号が追加されます。
+</dd>
+<dt> integer /"fn=[function]" </dt>
+<dd>
+開発者が定義したformat関数を実行します。
+"fn=func1"の場合、func1関数が実行されます。引数は(入力値,"fn=func1")です。
+</dd><br><br>
+
+<dt> number /String </dt>
+<dd>
+このformatでは、先頭の0の削除、小数点部の末尾0の削除をしたあと、対応する値に応じてformat処理を行います。
+なお、数字以外の文字は無視されます（ピリオドを除く）。対応する引数は以下の通りです。
+</dd>
+<dt> number /"%" </dt>
+<dd>
+末尾に%を追加します
+</dd>
+<dt> number /"," </dt>
+<dd>
+カンマで3桁ずつ区切ります
+</dd>
+<dt> number /"C" </dt>
+<dd>localeに合わせて先頭に通貨記号が追加されます。localeの変更方法は<a>こちら</a>を見てください。
+</dd>
+<dt> number /"C=[localecode]" </dt>
+<dd>
+"C=hoge"で指定された国状況に合わせて先頭に通貨記号が追加されます。
+</dd>
+<dt> number /"fn=[function]" </dt>
+<dd>
+開発者が定義したformat関数を実行します。
+"fn=func1"の場合、func1関数が実行されます。引数は(入力値,"fn=func1")です。
+</dd><br><br><br>
+<dt> number_size /int </dt>
+<dd>
+このformatでは、先頭の0の削除、小数点部の末尾0の削除をしたあと、対応する値に応じてformat処理を行います。なお、数字以外の文字は無視されます（ピリオドを除く）。
+整数部の最大桁数を定義します。小数部は切り捨てられます。<br>(例:{number_size:5}の時、123456.123⇒12345.)
+</dd>
+<dt> number_size /int.int </dt>
+<dd>
+このformatでは、先頭の0の削除、小数点部の末尾0の削除をしたあと、対応する値に応じてformat処理を行います。なお、数字以外の文字は無視されます（ピリオドを除く）。
+整数部、小数部の最大桁数をそれぞれ定義します。<br>(例:{number_size:5.3}の時、123456.123456⇒12345.123)
+</dd><br>
+<dt> size /int </dt><dd>
+最大文字数を定義します。(例:{size:3}の時、zaq12wsx⇒zaq)
+</dd><br><br>
+
+
+<div class="return"> 
+<h5>戻り値</h5> 
+<div class="type">jQuery</div><div class="desc"> 
+   jQueryオブジェクト
+   </div>
+</div> 
+<div class="target"> 
+  <h5>ターゲットオブジェクト</h5> 
+  jQueryオブジェクト（フォーマットを設定したいノード）
+</div>
+
+<div class="return"> 
+  <h5>ユーザ定義フォーマット</h5> 
+  新たなフォーマットの定義を行うことができます。<br>
+  jQuery.sq.format.fnsに新規にプロパティを追加することで設定できます。<br>
+  <br>
+  例えば、入力された文字を小文字に変換するフォーマットはこのようになります。<br>
+<pre class="javascript" wrap="1">
+  jQuery.sq.format.fns["toLowerCase"] ={
+  	format: function(data, config) { return data.toLowerCase(); },
+  	unformat: function(data, config) { return data.toLowerCase(); },
+  };
+</pre>
+  こうすると、以下のように使えます。
+<pre class="javascript" wrap="1">
+  $("[name=a]").format([{toLowerCase:""}]);
+</pre>
+  <br>
+  
+  jQuery.sq.format.fnsに追加するのは、formatとunformatプロパティを持つオブジェクトです。
+  共に2つの引数を持つ関数で、
+  最初の引数がユーザの入力値（あるいは直前のフォーマット／アンフォーマットが実施された値）になり、
+  2つ目の引数は、format関数で指定された値にです。
+  つまり「toLowerCase:""」の値部分、今の例ですと「""（空文字）」がくることになります。
+  また、この関数の返り値がフォーマットした値になります。
+  
+  
+</div>
+
+<div class="samples"> 
+<h5>サンプル</h5> 
+<h6>サンプル1</h6> 
+
+<pre class="html" wrap="1">
+&lt;form id="Sample01" name="MainForm"&gt;
+  &lt;table&gt;
+    &lt;tr&gt;
+      &lt;td id="a_label"&gt;.format([{date:"-"}])&lt;/td&gt;
+      &lt;td&gt;&lt;input type="text" name="a"/&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td id="b_label"&gt;.format([{integer:"%"}])&lt;/td&gt;
+      &lt;td&gt;&lt;input type="text" name="b"/&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td id="c_label"&gt;.format([{number:"C"}])&lt;/td&gt;
+      &lt;td&gt;&lt;input type="text" name="c"/&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td id="d_label"&gt;.format([{number_size:3.2}])&lt;/td&gt;
+      &lt;td&gt;&lt;input type="text" name="d"/&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;/td&gt;
+      &lt;td id="e_label"&gt;.format([{size:4}])&lt;/td&gt;
+      &lt;td&gt;&lt;input type="text" name="e"/&gt;      
+      &lt;input type="button" value="submit" id='button' /&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/form&gt;
+</pre> 
+
+<pre class="javascript" wrap="1">
+$("[name=a]").format([{date:"-"}]);
+$("[name=b]").format([{integer:"%"}]);
+$("[name=c]").format([{number:"C"}]);
+$("[name=d]").format([{number_size:3.2}]);
+$("[name=e]").format([{size:4}]);
+</pre> <br>
+[<a href="format_src.html">別ページで表示</a>]<br>
+<iframe src="format_src.html"width=624 height=200></iframe><br><br>
+</div> 
+</div>
+
+
+	
+	</div>
+<!--メインのブロック終わり-->
+
+<!--サイドのブロック-->
+	<div id="box_side">
+		<div class="menu">
+			<h3>J-Starとは</h3>
+			<ul>
+				<li><a href="../../overview.html">概要</a></li>
+				<li><a href="../../suziQ_JStar.html">suziQとJ-Star</a></li>
+				<li><a href="../../basic/mode.html">3つのモード</a></li>
+				<li><a href="../../basic/message.html">国際化</a></li>
+				<li><a href="../../debugger/debugger.html">強力なデバッガー</a></li>
+				<li><a href="../../setup_obj/setup_obj.html">setup_obj</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>GetStart</h3>
+			<ul>
+				<li><a href="../../getstart/gettingStart_main.html">J-Starを使ってみよう</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>API</h3>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">ajax</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/ajax/ajax.html">ajax(options)</a></li>
+					<li><a href="../../api/ajax/to.html">to(url,data,selector(option))</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">dom</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/dom/createOptions(arr).html">createOptions(arr)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">format</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/format/format.html">format(options)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">inputprompt</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/inputprompt/inputprompt(string).html">inputprompt(string)</a></li>
+					<li><a href="../../api/inputprompt/inputprompt(string,class).html">inputprompt(string, class)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">validator</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/validator/validate.html">validate</a></li>
+					<li><a href="../../api/validator/valid_message(val).html">valid_message(val)</a></li>
+					<li><a href="../../api/validator/valid_message(val,args).html">valid_message(val, args)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">suziQ</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/suziQ/fill.html">fill(data,fnc(option))</a></li>
+					<li><a href="../../api/suziQ/sq_post.html">sq_post(opts)</a></li>
+					<li><a href="../../api/suziQ/sq_post.html">sq_get(opts)</a></li>
+					<li><a href="../../api/suziQ/sq_post.html">sq_put(opts)</a></li>
+					<li><a href="../../api/suziQ/sq_post.html">sq_delete(opts)</a></li>
+					<li><a href="../../api/suziQ/sq_norequest.html">sq_norequest(opts)</a></li>
+				</div>
+			</ul>
+		</div>
+	</div>
+<!--サイドのブロック終わり-->
+
+	<br class="both"><!--回り込みの解除-->
+</div>
+<!--/サイドとメインをくくる-->
+	<div id="centerbottom"></div><!--下の丸み-->
+
+
+<!--フッタ-->
+<div id="foot">
+Copyright（c）2011 IBM All rights reserved
+</div>
+<!--フッタ終わり-->
+
+
+</div>
+<!--iflameで閉じる-->
+</body>
+</html>

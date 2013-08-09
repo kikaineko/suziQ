@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-type" content="text/css">
+
+<script type='text/javascript' src='../../../../js/user/jquery-1.5.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.json-2.2.min.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.suziQ.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery.suziQ.settings.js'></script>
+<script type='text/javascript' src='../../../../js/user/jquery-ui-1.8.2.custom.min.js'></script>
+
+<script type='text/javascript' src='../../../../js/j-star/j-star.js'></script>
+
+
+
+
+
+
+<title>J-Star</title>
+<link rel='stylesheet' href='../../../style/style.css' type='text/css'>
+<link rel='stylesheet' href='../../../style/j-star.css' type='text/css'>
+</head>
+<body>
+
+
+
+<div id="flame">
+<!--ヘッダ-->
+<div id="head">
+<a href="../../top.html"><div id="logo">J-Star</div></a>
+</div>
+<!--/ヘッダ-->
+
+<!--サイドとメインをくくる-->
+<div id="center">
+<div id="centertop"></div>
+	<!--メインのブロック-->
+	<div id="box_main">
+
+	<div class="main">
+	<h1>sq_post(opts)/sq_get(opts)/sq_put(opts)/sq_delete(opts)</h1>
+	<p>
+	ボタンなどを押下した際にAJAX通信を実施するための関数です。<br>
+	この関数でフォーム送信を実行する場合、自動でフォームに対する入力チェックが実行されます。<br><br>
+	この関数の引数で設定できるのは$$.ajaxと同一です。ただし、以下の値は省略できます。
+	</p>
+<dt>type</dt>
+<dd>sq_postであればPOSTを、sq_getであればGETを設定します。<br>
+</dd>
+<dt>form_id</dt>
+<dd>押下するボタンが存在するフォームのIDを自動で取得します。<br>
+</dd>
+
+
+<br><br>
+<div class="return"> 
+<h5>戻り値</h5> 
+<div class="type">jQuery</div><div class="desc"> 
+   jQueryオブジェクト
+   </div></dd> 
+</div> 
+<div class="target"> 
+  <h5>ターゲットオブジェクト</h5> 
+  jQueryオブジェクト
+</div>
+<div class="samples"> 
+<h5>サンプル</h5> 
+<h6>サンプル1</h6> 
+
+<pre class="html" wrap="1">
+&lt;form id="f"&gt;
+  &lt;input type="text" name="aaa" /&gt;
+  &lt;button id="btn"&gt;do&lt;/button&gt;
+&lt;/form&gt;
+</pre>
+
+<pre class="javascript" wrap="1">
+$('#btn').sq_post({ url:"hoge", 
+   callback: function(res,req){ /* 何かする */}});
+</pre> <br>
+このようにすると、「hoge」というURLのサービスにPOSTメソッドでアクセスし、
+そのサーバのレスポンスをcallback関数に渡して実行されます。
+</div> 
+</div>
+
+
+	
+	</div>
+<!--メインのブロック終わり-->
+
+
+<!--サイドのブロック-->
+	<div id="box_side">
+		<div class="menu">
+			<h3>J-Starとは</h3>
+			<ul>
+				<li><a href="../../overview.html">概要</a></li>
+				<li><a href="../../suziQ_JStar.html">suziQとJ-Star</a></li>
+				<li><a href="../../basic/mode.html">3つのモード</a></li>
+				<li><a href="../../basic/message.html">国際化</a></li>
+				<li><a href="../../debugger/debugger.html">強力なデバッガー</a></li>
+				<li><a href="../../setup_obj/setup_obj.html">setup_obj</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>GetStart</h3>
+			<ul>
+				<li><a href="../../getstart/gettingStart_main.html">J-Starを使ってみよう</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>API</h3>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">ajax</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/ajax/ajax.html">ajax(options)</a></li>
+					<li><a href="../../api/ajax/to.html">to(url,data,selector(option))</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">dom</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/dom/createOptions(arr).html">createOptions(arr)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">format</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/format/format.html">format(options)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">inputprompt</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/inputprompt/inputprompt(string).html">inputprompt(string)</a></li>
+					<li><a href="../../api/inputprompt/inputprompt(string,class).html">inputprompt(string, class)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">validator</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/validator/validate.html">validate</a></li>
+					<li><a href="../../api/validator/valid_message(val).html">valid_message(val)</a></li>
+					<li><a href="../../api/validator/valid_message(val,args).html">valid_message(val, args)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">suziQ</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../../api/suziQ/fill.html">fill(data,fnc(option))</a></li>
+					<li><a href="../../api/suziQ/sq_post.html">sq_post(opts)</a></li>
+					<li><a href="../../api/suziQ/sq_post.html">sq_get(opts)</a></li>
+					<li><a href="../../api/suziQ/sq_post.html">sq_put(opts)</a></li>
+					<li><a href="../../api/suziQ/sq_post.html">sq_delete(opts)</a></li>
+					<li><a href="../../api/suziQ/sq_norequest.html">sq_norequest(opts)</a></li>
+				</div>
+			</ul>
+		</div>
+	</div>
+<!--サイドのブロック終わり-->
+
+	<br class="both"><!--回り込みの解除-->
+</div>
+<!--/サイドとメインをくくる-->
+	<div id="centerbottom"></div><!--下の丸み-->
+
+
+<!--フッタ-->
+<div id="foot">
+Copyright（c）2011 IBM All rights reserved
+</div>
+<!--フッタ終わり-->
+
+
+</div>
+<!--iflameで閉じる-->
+</body>
+</html>

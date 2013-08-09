@@ -1,0 +1,255 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-type" content="text/css">
+
+<script type='text/javascript' src='../../js/user/jquery-1.5.js'></script>
+<script type='text/javascript' src='../../js/user/jquery.json-2.2.min.js'></script>
+<script type='text/javascript' src='../../js/user/jquery.suziQ.js'></script>
+<script type='text/javascript' src='../../js/user/jquery.suziQ.settings.js'></script>
+<script type='text/javascript' src='../../js/user/jquery-ui-1.8.2.custom.min.js'></script>
+
+<script type='text/javascript' src='../../js/j-star/j-star.js'></script>
+
+
+
+
+
+
+
+
+<title>J-Star</title>
+<link rel='stylesheet' href='../style/style.css' type='text/css'>
+</head>
+<body>
+
+<div id="flame">
+
+<!--ヘッダ-->
+<div id="head">
+<a href="top.html"><div id="logo">J-Star</div></a>
+</div>
+<!--/ヘッダ-->
+
+<!--サイドとメインをくくる-->
+<div id="center">
+<div id="centertop"></div>
+	<!--メインのブロック-->
+	<div id="box_main">
+
+	<div class="main">
+	<h1>概要</h1>
+	<p>
+	J-Starは、要件定フェーズや設計フェーズのようにまだサーバサイドの処理が出来上がる前から動く画面を作ることができます。
+	技術的には、サーバサイドと画面との責務を完全に分離することと、サーバへのアクセスをmock化することによって実現しています。
+	</p>
+	<br>
+	<h3>従来との差</h3>
+	<p>
+	従来のようにJSPなどを利用する場合、サーバと画面の責務の分離を行うことはできませんでした。
+	画面の遷移先決定や表示用にデータを加工するなどの多くの画面用の処理がサーバ側で実行されていました。
+	このため、サーバサイドのソースが非常に大きくなってしまっていました。<br>
+	J-Starを使うとこの点が大きく改善されます。J-Starでは画面で行うべき処理を画面側だけで実行できます。
+	結果、画面とサーバとのやりとりは本当に必要なデータのやりとりだけになり、サーバの処理は実行するべきサービスにだけ集中することができます。<br>
+	
+	</p>
+	</div>
+	
+	<div class="main">
+	<h1>アーキテクチャ</h1>
+	<p>
+	J-Starでは、古いJ2EEのアーキテクチャではなく、RIAに近いアーキテクチャを取るほうが良いと思われます。<br>
+	以下ではJ-Starをより上手に使うためのヒントを記述します。<br>
+	</p>
+	<div class="submain">
+	<strong>1. 画面側の責務</strong>
+	</div>
+	<div class="sub">
+	画面側は従来よりも多くの責務を負うべきです。
+	つまり、遷移先の決定、表示用のデータ加工、入力チェック、複数画面間でのデータの持ち回り（セッション）などは
+	全て画面側で実行するほうが良いでしょう。
+	</div><br>
+	<div class="submain">
+	<strong>2. サーバ側の責務</strong>
+	</div>
+	<div class="sub">
+	サーバ側の責務はよりビジネスロジックに集中したものとするべきです。つまりビジネスロジック、入力チェック、
+	認証など画面側で実施すべきでない処理をサーバ側で実行するべきです。<br>
+	<br>
+	こうするとJ-Starの画面からサーバを見ると、サーバはただの大きなDBに見えます。
+	J-Starはサーバの特定URIにアクセスして、なんらかのデータをサーバから貰うだけなので
+	データを提供してくれる大きなDBと見ることも可能になります。<br>
+	このような立場からJ-Starではサーバの処理はサービスに徹するべきだと考えます。
+	</div>
+	
+	<br>
+	<div class="submain">
+	<strong>3. 画面とサーバの関係</strong>
+	</div>
+	<div class="sub">
+	従来、サーバ処理の単位は画面の単位としばしば強い結びつきがありました。
+	しかしJ-Starではそのような考えを取る必要はありません（もちろん取っても構いませんが）。
+	サーバ処理と、画面は完全に分離して考えるほうがより効率的になると思われます。<br>
+	例えば、サーバから多少余分なデータを受け取っても画面側でそれを表示しなければ良いだけですし、
+	あるいは逆に画面上で別のデータが必要になったら、サーバのサービスを修正するよりは
+	別のサービスを追加で呼べば済むことも多いかもしれません。
+	</div>
+	
+	<br>
+	<div class="submain">
+	<strong>4. 画面遷移</strong>
+	</div>
+	<div class="sub">
+	画面遷移はJ-Starアプリにおいては、かなり曖昧な概念になってしまいます。
+	現在表示している画面の一部だけを書き換えるという処理が非常に多くなるためです。<br>
+	とはいえ、従来のような画面遷移を基本に考えることが良いでしょう。<br><br>
+	画面遷移を行う場合、気をつけることがあります。
+	それは現在のJavascriptの空間を保持したまま画面遷移したいのかどうかがポイントになります。<br>
+	Javascriptの空間を保持したくない場合は、通常のAタグなどで遷移してください。
+	保持したい場合は、J-Starの$.sq.ajax.to関数を利用してください。
+	
+	</div>
+	</div>
+	
+	<div class="main">
+	<h1>技術的要件</h1><br>
+	<div class="submain">
+	<strong>1. 画面とサーバ間の通信</strong>
+	</div>
+	<div class="sub">
+	サーバとのやりとりはなるべくJ-Star経由、あるいはjQueryで実行してください。
+	jQueryのajax関数がJ-Starの関数で置き換えられているため、実際にはjQuery経由であってもJ-Star経由になります。<br>
+	<br>
+	J-Starでは画面とサーバのやりとりは全てAjax通信になります。
+	また、通信する際のデータフォーマットはJSONがデフォルトです。
+	通信のデータフォーマットはXMLやSOAPに変更することも可能ですが、現状のJ-Starではそのような機能が提供されているわけではありません。<br>
+	</div><br>
+	<div class="submain">
+	<strong>2.文字コード</strong>
+	</div>
+	<div class="sub">
+	全てのHTML、JS、CSSはUTF-8で記述することが推奨です。
+	他の文字コードでも問題はありませんが、その場合はjquery.suziQ.settings.jsを編集してください。
+	</div>
+	<br>
+	<div class="submain">
+	<strong>3.国際化</strong>
+	</div>
+	<div class="sub">
+	国際化のロケール判定を現在はサーバに問い合わせるようになっています。
+	このため、J-Starでは唯一国際化のロケール判定のみ画面側で実行することができません。
+	</div><br>
+	
+	</div><br><br>
+	
+	
+	
+
+	
+
+
+	
+	</div>
+<!--メインのブロック終わり-->
+
+
+<!--サイドのブロック-->
+	<div id="box_side">
+		<div class="menu">
+			<h3>J-Starとは</h3>
+			<ul>
+				<li><a href="overview.html">概要</a></li>
+				<li><a href="suziQ_JStar.html">suziQとJ-Star</a></li>
+				<li><a href="basic/mode.html">3つのモード</a></li>
+				<li><a href="basic/message.html">国際化</a></li>
+				<li><a href="debugger/debugger.html">強力なデバッガー</a></li>
+				<li><a href="setup_obj/setup_obj.html">setup_obj</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>GetStart</h3>
+			<ul>
+				<li><a href="getstart/gettingStart_main.html">J-Starを使ってみよう</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>API</h3>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">ajax</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="api/ajax/ajax.html">ajax(options)</a></li>
+					<li><a href="api/ajax/to.html">to(url,data,selector(option))</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">dom</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="api/dom/createOptions(arr).html">createOptions(arr)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">format</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="api/format/format.html">format(options)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">inputprompt</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="api/inputprompt/inputprompt(string).html">inputprompt(string)</a></li>
+					<li><a href="api/inputprompt/inputprompt(string,class).html">inputprompt(string, class)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">validator</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="api/validator/validate.html">validate</a></li>
+					<li><a href="api/validator/valid_message(val).html">valid_message(val)</a></li>
+					<li><a href="api/validator/valid_message(val,args).html">valid_message(val, args)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">suziQ</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="api/suziQ/fill.html">fill(data,fnc(option))</a></li>
+					<li><a href="api/suziQ/sq_post.html">sq_post(opts)</a></li>
+					<li><a href="api/suziQ/sq_post.html">sq_get(opts)</a></li>
+					<li><a href="api/suziQ/sq_post.html">sq_put(opts)</a></li>
+					<li><a href="api/suziQ/sq_post.html">sq_delete(opts)</a></li>
+					<li><a href="api/suziQ/sq_norequest.html">sq_norequest(opts)</a></li>
+				</div>
+			</ul>
+		</div>
+	</div>
+<!--サイドのブロック終わり-->
+
+	<br class="both"><!--回り込みの解除-->
+</div>
+<!--/サイドとメインをくくる-->
+	<div id="centerbottom"></div><!--下の丸み-->
+
+
+<!--フッタ-->
+<div id="foot">
+Copyright（c）2011 IBM All rights reserved
+</div>
+<!--フッタ終わり-->
+
+
+</div>
+<!--iflameで閉じる-->
+</body>
+</html>

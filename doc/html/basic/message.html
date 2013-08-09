@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-type" content="text/css">
+
+<script type='text/javascript' src='../../../js/user/jquery-1.5.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.json-2.2.min.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.suziQ.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.suziQ.settings.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery-ui-1.8.2.custom.min.js'></script>
+
+<script type='text/javascript' src='../../../js/j-star/j-star.js'></script>
+
+
+
+
+
+
+
+<title>J-Star</title>
+<link rel='stylesheet' href='../../style/style.css' type='text/css'>
+<link rel='stylesheet' href='../../style/j-star.css' type='text/css'>
+</head>
+<body>
+
+<div id="flame">
+
+<!--ヘッダ-->
+<div id="head">
+<a href="../top.html"><div id="logo">J-Star</div></a>
+</div>
+<!--/ヘッダ-->
+
+<!--サイドとメインをくくる-->
+<div id="center">
+<div id="centertop"></div>
+	<!--メインのブロック-->
+	<div id="box_main">
+	<div class="main">
+	<h1>国際化</h1>
+	<p>
+	J-Starでは国際化に対応することが可能です。
+	つまり、ブラウザの言語を変更すると言語に応じた画面に変更されます。
+	（ただし、この機能はローカルモードでは正しく機能しません）
+	</p>
+
+<dl class="arguments"> 
+  <h5>国際化</h5>
+  <dt>概要</dt>
+  <dd><div class="desc">
+  $$.setupオブジェクトにメッセージファイルを指定するとJ-Starがロケールを補完して、
+  メッセージファイルを読み込みます。
+  読み込んだメッセージは、メッセージオブジェクトとしてinit関数の第２引数として渡されます。<br>
+  つまり、メッセージオブジェクトがブラウザのロケールによって取る値が異なることになります。
+  そしてこのメッセージオブジェクトを $$.fill 関数などに渡すことによって画面内の文言を書き換える事ができます。<br>
+  <br>
+  <br>
+  国際化機能をOFFにするには
+  jquery.suziQ.settings.js で　
+  <pre class="javascript" wrap="1">
+jQuery.sq.settings.locale_path=null;
+</pre>
+として下さい。
+  </div></dd>
+  <dt>メッセージファイル</dt>
+  <dd>
+  <div class="desc">
+  国際化されたメッセージファイルを読み込むには、setupオブジェクトのmessagesで指定することができます。
+  詳細な使い方に関しては、setupオブジェクトの説明を参照してください。
+ </div></dd>
+<br>
+ <dt>メッセージファイル内の記述方法</dt>
+  <dd>
+  <div class="desc">
+  メッセージファイルは以下の記述方法に従って下さい。
+  <pre class="javascript" wrap="1">
+  jQuery.sq.message({
+    "aaa": "XXXXX",
+    "bbb": "YYYYY"
+  });
+</pre> 
+  jQuery.sq.message関数の呼び出しで引数にオブジェクトをいれてください。
+  このように記述すると、メッセージオブジェクトから以下のようにデータを取得することができます。<br>
+  alert(messages["aaa"]);<br>
+  こうすると XXXXX と表示されます。
+ </div></dd>
+<br>
+ <dt>ロケールの決定方法</dt>
+  <dd>
+  <div class="desc">
+  J-Starではロケールの取得方法は、サーバに問い合わせて決定するようになります。
+  どのような処理であるかは、J-Star付属のJavaのサンプルコード（LangServlet.java）を参照してください。
+  この実装では、HTTPヘッダーのAccept-Languageを利用するようになっています。
+<br><br>
+  このサービスはサーバ側に配置する必要があります。
+  このサービスにアクセスするURLは、jquery.suziQ.settings.js で　
+  <pre class="javascript" wrap="1">
+jQuery.sq.settings.locale_path='/locale';
+</pre>
+のように指定することができます。
+<br><br>
+  ロケールをサーバに問い合わせるため、ローカルモードでは国際化が正確に機能しなくなっています
+ </div></dd><br>
+</dl>
+
+
+
+</div>
+
+
+	
+	</div>
+<!--メインのブロック終わり-->
+
+
+<!--サイドのブロック-->
+	<div id="box_side">
+		<div class="menu">
+			<h3>J-Starとは</h3>
+			<ul>
+				<li><a href="../overview.html">概要</a></li>
+				<li><a href="../suziQ_JStar.html">suziQとJ-Star</a></li>
+				<li><a href="../basic/mode.html">3つのモード</a></li>
+				<li><a href="../basic/message.html">国際化</a></li>
+				<li><a href="../debugger/debugger.html">強力なデバッガー</a></li>
+				<li><a href="../setup_obj/setup_obj.html">setup_obj</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>GetStart</h3>
+			<ul>
+				<li><a href="../getstart/gettingStart_main.html">J-Starを使ってみよう</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>API</h3>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">ajax</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/ajax/ajax.html">ajax(options)</a></li>
+					<li><a href="../api/ajax/to.html">to(url,data,selector(option))</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">dom</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/dom/createOptions(arr).html">createOptions(arr)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">format</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/format/format.html">format(options)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">inputprompt</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/inputprompt/inputprompt(string).html">inputprompt(string)</a></li>
+					<li><a href="../api/inputprompt/inputprompt(string,class).html">inputprompt(string, class)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">validator</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/validator/validate.html">validate</a></li>
+					<li><a href="../api/validator/valid_message(val).html">valid_message(val)</a></li>
+					<li><a href="../api/validator/valid_message(val,args).html">valid_message(val, args)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">suziQ</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="../api/suziQ/fill.html">fill(data,fnc(option))</a></li>
+					<li><a href="../api/suziQ/sq_post.html">sq_post(opts)</a></li>
+					<li><a href="../api/suziQ/sq_post.html">sq_get(opts)</a></li>
+					<li><a href="../api/suziQ/sq_post.html">sq_put(opts)</a></li>
+					<li><a href="../api/suziQ/sq_post.html">sq_delete(opts)</a></li>
+					<li><a href="../api/suziQ/sq_norequest.html">sq_norequest(opts)</a></li>
+				</div>
+			</ul>
+		</div>
+	</div>
+<!--サイドのブロック終わり-->
+
+	<br class="both"><!--回り込みの解除-->
+</div>
+<!--/サイドとメインをくくる-->
+	<div id="centerbottom"></div><!--下の丸み-->
+
+
+<!--フッタ-->
+<div id="foot">
+Copyright（c）2011 IBM All rights reserved
+</div>
+<!--フッタ終わり-->
+
+
+</div>
+<!--iflameで閉じる-->
+</body>
+</html>

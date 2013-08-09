@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+<script type='text/javascript' src='../../../js/user/jquery-1.5.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.json-2.2.min.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.suziQ.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery.suziQ.settings.js'></script>
+<script type='text/javascript' src='../../../js/user/jquery-ui-1.8.2.custom.min.js'></script>
+
+<script type='text/javascript' src='../../../js/j-star/j-star.js'></script>
+
+
+
+
+
+<title>J-Star</title>
+<link rel='stylesheet' href='../../style/j-star.css' type='text/css'>
+</head>
+<body>
+<font size =2>このフレーム内（ページ内）でSHIFT + CTRL + ALT + SPACE を同時に押してください。
+<form id="Sample01" name="MainForm">
+<table>
+	<tr>
+		<td id="no_label">会員番号</td>
+		<td><input type="text" name="no"/></td>
+	</tr>
+	<tr>
+		<td id="name_label">名前</td>
+		<td><input type="text" name="name"/>&nbsp;&nbsp;<input type="button" value="ログイン" id='button' /></td>
+	</tr>
+</table><br>
+<a href="debugger.html">ガイドに戻る</a>
+</font>
+</form>
+
+<script type="text/javascript">
+var $$ = $.sq;
+$$.setup = {
+	messages: ['../../js/sq/message'],
+	init: function(data,messages){
+		$("[name=no]").validate(
+								{require:true, ch: "daA"}
+								).valid_message(
+									"valid.req.def",[$("#no_label").html(),"valid.char.aAn"]
+									);
+		$("[name=name]").validate({require:true,ch: " aA"}).valid_message("名前は半角英字か半角空白のみ許可。");
+
+		$("#button").sq_norequest({
+			url: '/Emps.json',
+			data: data,
+			callback: function(data){
+				$$.ajax.to( 'debugger_next_src.html' ,data );
+			}
+		});
+	}
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-type" content="text/css">
+<title>J-Star</title>
+<link rel='stylesheet' href='../style/style.css' type='text/css'>
+</head>
+<body>
+
+<div id="flame">
+
+<!--ヘッダ-->
+<div id="head">
+<a href="top.html"><div id="logo">J-Star</div></a>
+</div>
+<!--/ヘッダ-->
+
+<!--サイドとメインをくくる-->
+<div id="center">
+<div id="centertop"></div>
+	<!--メインのブロック-->
+	<div id="box_main">
+
+	<div class="main">
+	<h1>J-Star,SuziQの構成</h1>
+	<p>
+	J-StarはOSSのjQuery,SuziQ をベースとしたFWです。<br>
+	SuziQはAjaxをモック化するためのツールで、J-StarはこのSuziQをより便利に使うためのFWになっています。
+	J-Starでは以下をプラグインとして提供しています。<br>
+	<br>
+	またこのドキュメントでは、J-StarとSuziQは結びつきが大変強いためあまり2つを区別せずに記述します。
+	</div>
+
+	</p>
+	<img src="suziq_jstar.bmp"><br>
+[図1]全体の構成図
+<br><br><br>
+<dt>Formatter</dt>
+<dd>入力されたタイミングで入力値のフォーマットを行います。文字列から日付、数値、金額への変換が容易に実現できます。</dd><br>
+<dt>Validation</dt>
+<dd>入力値のバリデーションを行います。必須、文字種、文字長、値の存在範囲、などがチェックできます。正規表現、独自実装のバリデーションも可能です。</dd><br><br>
+<dt>Input prompt</dt>
+<dd>入力欄に初期表示で入力を促すメッセージを表示できます。cssクラスを独自に定義することも可能です。</dd><br><br>
+<dt>DOM操作</dt>
+<dd>dom操作の簡易なAPIを提供します。</dd><br><br>
+<dt>Debugger</dt>
+<dd>htmlファイルの状態や、変数に入力された値を確認することが出来ます。またフォーム･リンク項目の詳細も一覧表示できるdocumentationもあります。</dd><br><br>
+<br>
+<br><br><br>
+	</div>
+<!--メインのブロック終わり-->
+
+
+<!--サイドのブロック-->
+	<div id="box_side">
+		<div class="menu">
+			<h3>J-Starとは</h3>
+			<ul>
+				<li><a href="overview.html">概要</a></li>
+				<li><a href="suziQ_JStar.html">suziQとJ-Star</a></li>
+				<li><a href="basic/mode.html">3つのモード</a></li>
+				<li><a href="basic/message.html">国際化</a></li>
+				<li><a href="debugger/debugger.html">強力なデバッガー</a></li>
+				<li><a href="setup_obj/setup_obj.html">setup_obj</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>GetStart</h3>
+			<ul>
+				<li><a href="getstart/gettingStart_main.html">J-Starを使ってみよう</a></li>
+			</ul>
+		</div>
+		<div class="menu">
+			<h3>API</h3>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">ajax</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="api/ajax/ajax.html">ajax(options)</a></li>
+					<li><a href="api/ajax/to.html">to(url,data,selector(option))</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">dom</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="api/dom/createOptions(arr).html">createOptions(arr)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">format</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="api/format/format.html">format(options)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">inputprompt</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="api/inputprompt/inputprompt(string).html">inputprompt(string)</a></li>
+					<li><a href="api/inputprompt/inputprompt(string,class).html">inputprompt(string, class)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">validator</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="api/validator/validate.html">validate</a></li>
+					<li><a href="api/validator/valid_message(val).html">valid_message(val)</a></li>
+					<li><a href="api/validator/valid_message(val,args).html">valid_message(val, args)</a></li>
+				</div>
+			</ul>
+			<ul>
+				<div class="submenu">
+					<li><a href="#">suziQ</a></li>
+				</div>
+				<div class="subsubmenu">
+					<li><a href="api/suziQ/fill.html">fill(data,fnc(option))</a></li>
+					<li><a href="api/suziQ/sq_post.html">sq_post(opts)</a></li>
+					<li><a href="api/suziQ/sq_post.html">sq_get(opts)</a></li>
+					<li><a href="api/suziQ/sq_post.html">sq_put(opts)</a></li>
+					<li><a href="api/suziQ/sq_post.html">sq_delete(opts)</a></li>
+					<li><a href="api/suziQ/sq_norequest.html">sq_norequest(opts)</a></li>
+				</div>
+			</ul>
+		</div>
+	</div>
+<!--サイドのブロック終わり-->
+
+	<br class="both"><!--回り込みの解除-->
+</div>
+<!--/サイドとメインをくくる-->
+	<div id="centerbottom"></div><!--下の丸み-->
+
+
+<!--フッタ-->
+<div id="foot">
+Copyright（c）2011 IBM All rights reserved
+</div>
+<!--フッタ終わり-->
+
+
+</div>
+<!--iflameで閉じる-->
+</body>
+</html>
